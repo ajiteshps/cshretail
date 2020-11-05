@@ -130,13 +130,13 @@ async function getAll(req) {
 
                     } else {
                         response.status = 400;
-                        response.response = { "success": false, "data": {}, "message": "Retailers not found." };
+                        response.response = { "success": false, "data": account_ids, "message": "account_ids is less then Zero." };
                         return response;
                     }
 
                 } else {
                     response.status = 400;
-                    response.response = { "success": false, "data": {}, "message": "Retailers not found." };
+                    response.response = { "success": false, "data": accountObject, "message": "accountObject or row count is less then zero." };
                     return response;
                 }
 
