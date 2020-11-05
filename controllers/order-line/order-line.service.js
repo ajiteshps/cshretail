@@ -45,7 +45,7 @@ async function getAll(req) {
                 WhereClouse.push({ "fieldName": "order_line__c.business__c", "fieldValue": agentInfo.rows[0]['business']});
 
                 if (teamDetail.memberType == 'PSM') {
-                    WhereClouse.push({ "fieldName": "order_line__c.psm__c", "fieldValue": req.headers.agentid,"fieldName":"Retailer_Dealer__c","fieldValue":"Retailers_Sales_Service" })
+                    WhereClouse.push({ "fieldName": "order_line__c.psm__c", "fieldValue": req.headers.agentid,"fieldName":"Retailer_Dealer__c","fieldValue":"Retailers Sales Service" })
                 } else {
                     WhereClouse.push({ "fieldName": "order_line__c.asm__c", "fieldValue": teamDetail.ASM, "type": "IN","fieldName":"account__c","fieldValue":"OEM" })
                 }
