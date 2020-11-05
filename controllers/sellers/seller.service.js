@@ -136,7 +136,7 @@ async function getAll(req) {
 
                 } else {
                     response.status = 400;
-                    response.response = { "success": false, "data": accountObject, "message": "accountObject or row count is less then zero." };
+                    response.response = { "success": false, "data2": accountWhereClouse, "data": accountObject, "message": "accountObject or row count is less then zero." };
                     return response;
                 }
 
