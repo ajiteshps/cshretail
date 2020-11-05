@@ -155,7 +155,7 @@ async function getAll(req) {
     } catch (e) {
         console.log(e);
         response.status = 500;
-        response.response = { "success": false, "message": "Mandatory parameter(s) are missing." };
+        response.response = { "success": false,"error":e, "message": "Mandatory parameter(s) are missing." };
         return response;
     }
 }
