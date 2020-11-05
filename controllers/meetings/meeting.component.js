@@ -188,7 +188,7 @@ async function getDealerOrder(sellerdetails) {
 
     if (sellerdetails.dealer.length > 0) {
         dealer_ids = sellerdetails.dealer.join("','")
-        sql = `SELECT DISTINCT on (dealer__c) dealer__c ,name,sfid,date_part('epoch'::text, Order_Date__c) * (1000)::double precision as Order_Date__c,Retailer__c,order_value__c FROM ${process.env.TABLE_SCHEMA_NAME}.Order__c where Dealer__c AND Dealer__c = Retailers Sales Service IN ('${dealer_ids}') order by dealer__c,createddate desc`;
+        sql = `SELECT DISTINCT on (dealer__c) dealer__c ,name,sfid,date_part('epoch'::text, Order_Date__c) * (1000)::double precision as Order_Date__c,Retailer__c,order_value__c FROM ${process.env.TABLE_SCHEMA_NAME}.Order__c where Dealer__c AND Dealer__c = Retailers_Sales_Service IN ('${dealer_ids}') order by dealer__c,createddate desc`;
 
         console.log(`Get Dealer Orders ===== > ${sql}`);
 
