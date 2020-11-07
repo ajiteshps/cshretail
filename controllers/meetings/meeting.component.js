@@ -94,13 +94,15 @@ function mapOrders (visits, orders){
  */
 
 async function mapOrdersWithSellers(visits, retailerOrders, dealerOrders) {
-    console.log(dealerOrders);
+    console.log(dealerOrders,'dealer order');
+    // if(dealerOrders === null && dealerOrders == undefined )
+    // return ;
     var orders = [];
     if (retailerOrders.rows.length > 0 && dealerOrders.rows.length > 0) {
         orders = retailerOrders.rows.concat(dealerOrders.rows);
     } else if (retailerOrders.rows.length > 0) {
         orders = retailerOrders.rows;
-    } else if (dealerOrders.rows.length > 0) {
+    } else if (dealerOrders.rows.length != null && dealerOrders.rows.length > 0) {
         orders = dealerOrders.rows;
     }
     let uniqueVisits = await removeDupplciate(visits);
