@@ -21,7 +21,9 @@ module.exports = router;
  * @email rohit.ramawat@zoxima.com
  */
 function getAll(req, res, next) {
+    console.log(req.headers);
     try {
+
         
         if (!_.isEmpty(req.headers.agentid)) {
 

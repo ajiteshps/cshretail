@@ -59,9 +59,9 @@ async function getAll(req) {
                 }
             }
             if (teamDetail.memberType == 'PSM') {
-                WhereClouse.push({ "fieldName": "psm__c", "fieldValue": req.headers.agentid })
+                WhereClouse.push({ "fieldName": "psm__c", "fieldValue": req.headers.agentid });
             } else {
-                WhereClouse.push({ "fieldName": "asm__c", "fieldValue": teamDetail.ASM, "type": "IN" })
+                WhereClouse.push({ "fieldName": "asm__c", "fieldValue": teamDetail.ASM });
             }
 
 
@@ -78,7 +78,7 @@ async function getAll(req) {
                 limit = req.query.limit;
             }
 
-           sql = db.SelectAllQry(fields, tableName, WhereClouse, offset, limit,' order by createddate desc');
+           sql = db.SelectAllQry(fields, tableName, WhereClouse, offset, limit);
       
 
             console.log(`INFO::: Get LAST ORDERS = ${sql}`);
