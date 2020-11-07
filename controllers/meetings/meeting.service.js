@@ -319,7 +319,7 @@ async function planVisit(req) {
                 tableName = 'visits__c';
                
                 if (processResponse.isValidManager) {
-                    fieldsToBeInsert = 'pg_id__c,Assigned_by__c, visit_owner__c, asm__c, retailer_dealer__c, status__c, visit_date__c,createddate,visit_type__c';
+                    fieldsToBeInsert = 'pg_id__c,Assigned_by__c, visit_owner__c, asm__c, status__c, visit_date__c,createddate,visit_type__c';
 
                     sql = `INSERT into ${process.env.TABLE_SCHEMA_NAME}.${tableName} (${fieldsToBeInsert}) VALUES ${processResponse.fieldValues}`;
                     
