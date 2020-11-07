@@ -40,7 +40,7 @@ async function getAll(req) {
             var teamDetail = await db.getAsmHirarchy(req.headers.agentid);
             console.log('ddd',teamDetail)
             if (teamDetail.success) {
-            
+
 
             const fields = SF_ORDER_FIELD;
             const tableName = SF_ORDER_TABLE_NAME ;
@@ -79,7 +79,8 @@ async function getAll(req) {
             }
 
            sql = db.SelectAllQry(fields, tableName, WhereClouse, offset, limit,' order by createddate desc');
-          // sql = `SELECT * FROM Order__c`;
+      
+
             console.log(`INFO::: Get LAST ORDERS = ${sql}`);
 
             var orders = await client.query(sql);
