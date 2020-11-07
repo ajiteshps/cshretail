@@ -55,7 +55,7 @@ async function getAll(req) {
                 } else {
                     // If not type provided then we can check it on database 
                     // todo: Rohit
-                    //WhereClouse.push({ "fieldName": "retailer__c", "fieldValue": req.query.sellerid });
+                    WhereClouse.push({ "fieldName": "retailer__c", "fieldValue": req.query.sellerid });
                 }
             }
             if (teamDetail.memberType == 'PSM') {
