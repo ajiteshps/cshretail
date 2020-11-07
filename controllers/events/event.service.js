@@ -50,11 +50,11 @@ async function getAll(req) {
             if (validation.issetNotEmpty(req.headers.agentid)) {
                 WhereClouse.push({ "fieldName": "asm__c", "fieldValue": req.headers.agentid });
             }
-            sql = db.SelectAllQry(fields, tableName, WhereClouse, offset, limit, ' order by createddate desc');
+            sql = db.SelectAllQry(fields, tableName, WhereClouse, offset, limit);
             console.log(`INFO::: Get all Events = ${sql}`);
 
             var events = await client.query(sql);
-
+            console.log(events);
             if (events.rowCount != undefined && events.rowCount > 0) {
                 response.response = { 'success': true, "data": { "events": events.rows } };
                 response.status = 200;
