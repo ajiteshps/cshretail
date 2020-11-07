@@ -37,6 +37,7 @@ var offset = '0'; limit = '1000';
 async function getAll(req) {
     try {
 
+        console.log(req.headers);
         is_Validate = true;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.headers.agentid) : false;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.query.startDate) : false;
@@ -89,7 +90,6 @@ async function getAll(req) {
             const tableName = SF_VISIT_TABLE_NAME;
 
             const WhereClouse = [];
-
             teamDetail = await db.getAsmHirarchy(req.headers.agentid);
             if (teamDetail.success) {
                 if (teamDetail.memberType == 'PSM') {
@@ -146,7 +146,7 @@ async function getAll(req) {
                         "s_table_field": "City_SS__c.sfid"
                     }
                 ];
-                orderBy = ` order by visit_date__c asc`;
+                orderBy = ` order by visit_date__c desc`;
                 // construct SQL
                 var sql = db.fetchAllWithJoinQry(fieldsArray, tableName, joins, WhereClouse, offset, limit, orderBy);
 
@@ -319,7 +319,7 @@ async function planVisit(req) {
                 tableName = 'visits__c';
                
                 if (processResponse.isValidManager) {
-                    fieldsToBeInsert = 'pg_id__c,Assigned_by__c, visit_owner__c, asm__c, status__c, visit_date__c,createddate,visit_type__c';
+                    fieldsToBeInsert = 'pg_id__c,Assigned_by__c, visit_owner__c, asm__c,Retailer_Dealer__c,status__c, visit_date__c,createddate,visit_type__c';
 
                     sql = `INSERT into ${process.env.TABLE_SCHEMA_NAME}.${tableName} (${fieldsToBeInsert}) VALUES ${processResponse.fieldValues}`;
                     
