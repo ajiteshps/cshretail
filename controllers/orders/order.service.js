@@ -78,8 +78,8 @@ async function getAll(req) {
                 limit = req.query.limit;
             }
 
-           //sql = db.SelectAllQry(fields, tableName, WhereClouse, offset, limit,' order by createddate desc');
-           sql = `SELECT * FROM order__c`;
+          // sql = db.SelectAllQry(fields, tableName, WhereClouse, offset, limit,' order by createddate desc');
+           sql = `SELECT * FROM Order__c`;
             console.log(`INFO::: Get LAST ORDERS = ${sql}`);
 
             var orders = await client.query(sql);
