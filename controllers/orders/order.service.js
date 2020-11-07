@@ -43,14 +43,13 @@ async function getAll(req) {
             
 
             const fields = SF_ORDER_FIELD;
-            const tableName = SF_ORDER_TABLE_NAME;
+            const tableName = SF_ORDER_TABLE_NAME ;
 
             const WhereClouse = [];
             var offset = '0', limit = '1000';
             if (validation.issetNotEmpty(req.query.sellerid)) {
                 if (req.query.type != undefined && req.query.type == 'Dealer') {
                     WhereClouse.push({ "fieldName": "dealer__c", "fieldValue": req.query.sellerid });
-
                 } else if (req.query.type != undefined && req.query.type == 'Retailer') {
                     WhereClouse.push({ "fieldName": "retailer__c", "fieldValue": req.query.sellerid });
                 } else {
