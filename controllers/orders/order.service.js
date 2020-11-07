@@ -42,7 +42,7 @@ async function getAll(req) {
             if (teamDetail.success) {
             
 
-            // const fields = SF_ORDER_FIELD;
+            const fields = SF_ORDER_FIELD;
             const tableName = Order__C;
 
             const WhereClouse = [];
