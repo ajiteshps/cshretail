@@ -79,6 +79,7 @@ async function sendOTP(data) {
     }
 
 }
+
 async function setPassword(data) {
     try {
         if (data.body.phone != undefined && data.body.phone != '') {
@@ -132,7 +133,6 @@ async function setPassword(data) {
 
 
 async function confirmOTP({ phone, password }) {
-
     try {
         console.log('password >>> ',  password);
         var encPass = md5(password);

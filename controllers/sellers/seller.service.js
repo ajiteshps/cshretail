@@ -106,9 +106,9 @@ async function getAll(req) {
 
                         account_ids = account_ids.join("','");
                         if (req.query.type == 'Retailer') {
-                            accountOrderSql =`SELECT DISTINCT on (retailer__c) retailer__c ,name,sfid,date_part('epoch'::text, Order_Date__c) * (1000)::double precision as Order_Date__c,dealer__c,Total_Product_SKU__c,order_value__c FROM ${process.env.TABLE_SCHEMA_NAME}.Order__c where retailer__c IN ('${account_ids}') order by retailer__c,createddate desc`;
+                            accountOrderSql = `SELECT DISTINCT on (retailer__c) retailer__c ,name,sfid,date_part('epoch'::text, Order_Date__c) * (1000)::double precision as Order_Date__c,dealer__c,Total_Product_SKU__c,order_value__c FROM ${process.env.TABLE_SCHEMA_NAME}.Order__c where retailer__c IN ('${account_ids}') order by retailer__c,createddate desc`;
                         } else {
-                            accountOrderSql = `SELECT DISTINCT on (dealer__c) dealer__c ,name,sfid,date_part('epoch'::text, Order_Date__c) * (1000)::double precision as Order_Date__c,Retailer__c,Total_Product_SKU__c,order_value__c FROM ${process.env.TABLE_SCHEMA_NAME}.Order__c where Dealer__c IN ('${account_ids}') order by dealer__c,createddate desc`;
+                            accountOrderSql = `SELECT DISTINCT on (dealer__c) dealer__c ,name,sfid,date_part('epoch'::text, Order_Date__c) * (1000)::double precision as Order_Date__c,Retailer__c,Total_Product_SKU__c,order_value__c FROM ${process.env.TABLE_SCHEMA_NAME}.Order__c where Dealer__c   IN ('${account_ids}') order by dealer__c,createddate desc`;
                         }
 
                         console.log(`INFO::::::::: GET account order  === ${accountOrderSql}`);
@@ -136,7 +136,7 @@ async function getAll(req) {
 
                 } else {
                     response.status = 400;
-                    response.response = { "success": false,  "data": {}, "message": "Retailers not found." };
+                    response.response = { "success": false, "data": {}, "message": "Retailers not found." };
                     return response;
                 }
 
@@ -435,10 +435,9 @@ async function add(req) {
                         
             
 
-                fieldsToBeInsert = ' asm__c, name, type1__c, email__c, mobile_contact__c, potential_value__c, potential_retailer__c, dealer__c,category__c,retailer_category__c,createddate,competitor__c,owner_name__c,owner_phone__c,gstin__c,billingcity,billingstreet,billingpostalcode,billingcountry,billingstate,area__c,psm__c';
+                fieldsToBeInsert = ' asm__c, name,   type1__c, email__c, mobile_contact__c, potential_value__c, potential_retailer__c,category__c,retailer_category__c,createddate,competitor__c,owner_name__c,owner_phone__c,gstin__c,billingcity,billingstreet,billingpostalcode,billingcountry,billingstate,area__c,psm__c';
                 pg_id__c = uuidv4();
-                dealer_id = '';
-                fieldValues = [ asm_id, req.body.name, 'Retailer', email__c, mobile_contact__c, potential_value__c, potential_retailer__c, dealer_id , category__c, retailer_category__c, current_date_time, competitor__c, owner_name__c, owner_phone__c, gstin__c, billingcity, billingstreet, billingpostalcode, billingcountry, billingstate,area__c,psm_id];
+                fieldValues = [ asm_id, req.body.name, 'Retailer', email__c, mobile_contact__c, potential_value__c, potential_retailer__c, category__c, retailer_category__c, current_date_time, competitor__c, owner_name__c, owner_phone__c, gstin__c, billingcity, billingstreet, billingpostalcode, billingcountry, billingstate,area__c,psm_id];
                 
                 tableName = 'Account';
 
@@ -594,7 +593,8 @@ async function updateSellerInfo(req) {
                 
 
 
-                WhereClouse.push({ "field": "sfid", "value": req.body.seller_id,"field":"Dealer__c","value":"0122w000000NdOTAA0" });
+                WhereClouse.push({ "field": "sfid", "value": req.body.seller_id });
+
 
                 accountDetail = await updateRecord(tableName, fieldValue, WhereClouse);
 

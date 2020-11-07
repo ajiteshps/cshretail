@@ -58,9 +58,7 @@ async function getAll(req) {
                     "type": "LEFT",
                     "table_name": "contact",
                     "p_table_field": `${EVENT_TABLE_NAME}.Event_Participants__c`,
-                    "s_table_field": "contact.sfid",
-                    "Event_Participants__c":"Service Engineer",
-                    "Event_Participants__c":"other"
+                    "s_table_field": "contact.sfid"
                 }
             ];
             console.log('EVENT_FIELD    ===>  ',EVENT_FIELD);
@@ -68,7 +66,6 @@ async function getAll(req) {
             event_participants_FIELD.push("contact.name as participant_contact_name");
             console.log('event_participants_FIELD   ===>  ',event_participants_FIELD);
             sql = db.fetchAllWithJoinQry(event_participants_FIELD, tableName,joins, WhereClouse, offset, limit, ' order by event_participants__c.createddate desc' )
-
             console.log(`INFO::: Get all event_participants__c = ${sql}`);
 
             var eventParticipants = await client.query(sql);

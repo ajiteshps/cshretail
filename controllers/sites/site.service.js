@@ -8,6 +8,7 @@ var component = require(`${PROJECT_DIR}/controllers/sites/site.component`);
 var dashboard = require(`${PROJECT_DIR}/controllers/dashboard/dashboard.service`);
 var dtUtil = require(`${PROJECT_DIR}/utility/dateUtility`);
 
+
 module.exports = {
     getAll,
     detail,
@@ -18,15 +19,14 @@ module.exports = {
 var SITE_FIELD = [`name`,`sfid`,`pg_id__c`,`source_type__c`,`address_line_1__c`,`address_line_2__c`,`alternate_phone_no__c`,`area__c`,`asm__c`,`city__c`,`dealer__c`,`email__c`,`phone__c`,`project_type__c`,`retailer__c`,`site_name__c`,`site_stages__c`,`size__c`,`source__c`,`status__c`,`date_part('epoch'::text, createddate) * (1000)::double precision as createddate`];
 var SITE_TABLE_NAME = `sites__c`;
 momenttz = require('moment-timezone');
-
 /**
  * This method is used to get all orders using follwing parameters
  * @param {*} offset - start point
  * @param {*} limit - record limit
  * @param {*} sellerid - account id 
  * @param {*} type Dealer/retailer
+ 
  */
-
 async function getAll(req) {
     try {
 
@@ -55,7 +55,7 @@ async function getAll(req) {
                 WhereClouse.push({ "fieldName": "asm__c", "fieldValue": req.headers.agentid });
             }
             if (validation.issetNotEmpty(req.query.contact)) {
-                WhereClouse.push({ "fieldName": "source__c", "fieldValue": req.query.contact,"fieldName":"Source__c","fieldValue":"Service_Engineer", });
+                WhereClouse.push({ "fieldName": "source__c", "fieldValue": req.query.contact});
             }
 
             sql = db.SelectAllQry(fields, tableName, WhereClouse, offset, limit,' order by createddate desc');
