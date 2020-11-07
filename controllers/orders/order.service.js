@@ -50,6 +50,7 @@ async function getAll(req) {
             if (validation.issetNotEmpty(req.query.sellerid)) {
                 if (req.query.type != undefined && req.query.type == 'Dealer') {
                     WhereClouse.push({ "fieldName": "dealer__c", "fieldValue": req.query.sellerid });
+                    
                 } else if (req.query.type != undefined && req.query.type == 'Retailer') {
                     WhereClouse.push({ "fieldName": "retailer__c", "fieldValue": req.query.sellerid });
                 } else {

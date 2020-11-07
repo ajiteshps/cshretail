@@ -21,7 +21,7 @@ global.SF_PRODUCT_TABLE_NAME = `Product_Group__c`;
 global.SF_VISIT_FIELD =  [`cancelled_reason__c`,`visit_owner__c`,`asm__c`,`visit_sequnce_no__c`, `Name`, `Match__c, Location__c`, `LastModifiedById`,`Duration__c`,`Day__c`,`CreatedById`]; 
 global.SF_VISIT_TABLE_NAME = `visits__c`;
 
-global.SF_ORDER_FIELD =  [`pg_id__c`,`psm__c`,`sfid`,`dealer__c`,`order_value__c`, `date_part('epoch'::text, Order_Date__c) * (1000)::double precision as Order_Date__c`,`retailer__c`,`name`,`Unique_Product_Count__c`,`promoted_product_count__c`,`Total_Product_SKU__c`, `date_part('epoch'::text, createddate) * (1000)::double precision as createddate`]; //`CreatedById`, , `LastModifiedById, Name`,`OwnerId`,`Unique_Product_Count__c`,`promoted_product_count__c`,`Total_sku_count__c`
+global.SF_ORDER_FIELD =  [`pg_id__c`,`psm__c`,`sfid`,`retailer__c`,`order_value__c`, `date_part('epoch'::text, Order_Date__c) * (1000)::double precision as Order_Date__c`,`retailer__c`,`name`,`Unique_Product_Count__c`,`promoted_product_count__c`,`Total_Product_SKU__c`, `date_part('epoch'::text, createddate) * (1000)::double precision as createddate`]; //`CreatedById`, , `LastModifiedById, Name`,`OwnerId`,`Unique_Product_Count__c`,`promoted_product_count__c`,`Total_sku_count__c`
 global.SF_ORDER_TABLE_NAME = `Order__c`;
 
 global.SF_MATERIAL_REQUESTS_FIELD =  [`CreatedById`, `Dealer__c`, `LastModifiedById, Name`, `Order_Date__c`,`OwnerId`,`promoted_product_count__c`,`Retailer__c`,`Total_sku_count__c`,`Unique_Product_Count__c`]; 
