@@ -88,7 +88,7 @@ async function getAll(req) {
                 response.status = 200;
                 return response;
             } else {
-                response.response = { 'success': false, "data": { "orders": [] }, "message": "No record found." };
+                response.response = { 'success': false, "data": { "orders": [] }, "message": "No Data found." };
                 response.status = 400;
                 return response;
             }
