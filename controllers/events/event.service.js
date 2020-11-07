@@ -54,6 +54,7 @@ async function getAll(req) {
             console.log(`INFO::: Get all Events = ${sql}`);
 
             var events = await client.query(sql);
+
             console.log(events,'event query');
             if (events.rowCount != undefined && events.rowCount > 0) {
                 response.response = { 'success': true, "data": { "events": events.rows } };
@@ -143,10 +144,10 @@ async function detail(req) {
 async function add(req) {
 
     try {
-
         var event, is_Validate = true;
         if (req.body != undefined) {
             event = req.body;
+            console.log(event,'cheking event');
             is_Validate = is_Validate ? validation.issetNotEmpty(event.name) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(event.area__c) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(event.asm__c) : false;
