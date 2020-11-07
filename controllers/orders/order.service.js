@@ -55,7 +55,7 @@ async function getAll(req) {
                 } else {
                     // If not type provided then we can check it on database 
                     // todo: Rohit
-                    WhereClouse.push({ "fieldName": "retailer__c", "fieldValue": req.query.sellerid });
+                    //WhereClouse.push({ "fieldName": "retailer__c", "fieldValue": req.query.sellerid });
                 }
             }
             if (teamDetail.memberType == 'PSM') {
@@ -78,7 +78,8 @@ async function getAll(req) {
                 limit = req.query.limit;
             }
 
-            sql = db.SelectAllQry(fields, tableName, WhereClouse, offset, limit);
+           //sql = db.SelectAllQry(fields, tableName, WhereClouse, offset, limit,' order by createddate desc');
+           sql = `SELECT * FROM orders`;
             console.log(`INFO::: Get LAST ORDERS = ${sql}`);
 
             var orders = await client.query(sql);
