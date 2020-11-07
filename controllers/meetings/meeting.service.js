@@ -37,6 +37,7 @@ var offset = '0'; limit = '1000';
 async function getAll(req) {
     try {
 
+        console.log(req.headers);
         is_Validate = true;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.headers.agentid) : false;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.query.startDate) : false;
@@ -145,7 +146,7 @@ async function getAll(req) {
                         "s_table_field": "City_SS__c.sfid"
                     }
                 ];
-                orderBy = ` order by visit_date__c asc`;
+                orderBy = ` order by visit_date__c desc`;
                 // construct SQL
                 var sql = db.fetchAllWithJoinQry(fieldsArray, tableName, joins, WhereClouse, offset, limit, orderBy);
 
