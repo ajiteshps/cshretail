@@ -42,8 +42,8 @@ async function getAll(req) {
             if (teamDetail.success) {
             
 
-            const fields = SF_ORDER_FIELD;
-            const tableName = SF_ORDER_TABLE_NAME;
+            // const fields = SF_ORDER_FIELD;
+            const tableName = Order__C;
 
             const WhereClouse = [];
             var offset = '0', limit = '1000';
