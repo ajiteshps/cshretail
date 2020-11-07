@@ -54,7 +54,7 @@ async function getAll(req) {
             console.log(`INFO::: Get all Events = ${sql}`);
 
             var events = await client.query(sql);
-            console.log(events);
+            console.log(events,'event query');
             if (events.rowCount != undefined && events.rowCount > 0) {
                 response.response = { 'success': true, "data": { "events": events.rows } };
                 response.status = 200;
