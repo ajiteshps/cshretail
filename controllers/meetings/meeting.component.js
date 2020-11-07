@@ -94,7 +94,7 @@ function mapOrders (visits, orders){
  */
 
 async function mapOrdersWithSellers(visits, retailerOrders, dealerOrders) {
-
+    console.log(dealerOrders);
     var orders = [];
     if (retailerOrders.rows.length > 0 && dealerOrders.rows.length > 0) {
         orders = retailerOrders.rows.concat(dealerOrders.rows);
@@ -110,7 +110,7 @@ async function mapOrdersWithSellers(visits, retailerOrders, dealerOrders) {
 }
 
 async function mapOrdersWithSellers_OLD(visits, retailerOrders, dealerOrders) {
-
+    console.log(dealerOrders);
     var orders = [];
     if (retailerOrders.rows.length > 0 && dealerOrders.rows.length > 0) {
         orders = retailerOrders.rows.concat(dealerOrders.rows);
