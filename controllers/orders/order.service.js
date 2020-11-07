@@ -84,7 +84,8 @@ async function getAll(req) {
             console.log(`INFO::: Get LAST ORDERS = ${sql}`);
 
             var orders = await client.query(sql);
-
+            console.log(order);
+            
             if (orders.rowCount != undefined && orders.rowCount > 0) {
                 response.response = { 'success': true, "data": { "orders": orders.rows } };
                 response.status = 200;
