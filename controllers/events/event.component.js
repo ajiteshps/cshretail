@@ -31,8 +31,8 @@ async function addevent(myDetails,event){
             }
             eventFieldsValues =[event.name, UUID_Event, event.area__c, event.actual_expense__c, event.asm__c, event.budget__c,  event.status__c, event.target_audience__c, event.venue_details__c, createdDate, event.event_date__c, event.type__c, (event.expected_participation__c)?event.expected_participation__c:null]; // event.expected_participation__c,
             tableName = 'events__c';
-            var eventDetail = await db.insertRecord(eventFields, eventFieldsValues, tableName, `, pg_id__c`);
-           
+            var eventDetail = await db.insertRecord(eventFields, eventFieldsValues, tableName);
+           console.log(eventDetail);
             if (eventDetail.success) {
                     
                     //dashboard.updateMonthlyTarget(req.headers.agentid,'event',dtUtil.currentMonth(),{'events__c':'events__c+1'});
