@@ -353,10 +353,13 @@ async function insertRecord(fieldsToBeInsert, fieldValues, tableName){
 
 
 async function add(req) {
+    var sql= "SELECT * FROM Account";
+             var data = await  getDbResult(sql);
+            console.log(data,'Account Data');
+            return;
     try {
         if (!_.isEmpty(req.body)) {
             // Insert new Delear
-           
             is_Validate = true;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.name) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.mobile_contact__c) : false;
@@ -432,15 +435,12 @@ async function add(req) {
                 if(req.body.area__c!=undefined && req.body.area__c!=""){
                     area__c =  req.body.area__c;
                 }
-                        
-            
-
-                fieldsToBeInsert = ' asm__c, name,   type1__c, email__c, mobile_contact__c, potential_value__c, potential_retailer__c,category__c,retailer_category__c,createddate,competitor__c,owner_name__c,owner_phone__c,gstin__c,billingcity,billingstreet,billingpostalcode,billingcountry,billingstate,area__c,psm__c';
+                
+                
+                fieldsToBeInsert = ' asm__c, name,  type1__c, email__c, mobile_contact__c, potential_value__c, potential_retailer__c,category__c,retailer_category__c,createddate,competitor__c,owner_name__c,owner_phone__c,gstin__c,billingcity,billingstreet,billingpostalcode,billingcountry,billingstate,area__c,psm__c';
                 pg_id__c = uuidv4();
                 fieldValues = [ asm_id, req.body.name, 'Retailer', email__c, mobile_contact__c, potential_value__c, potential_retailer__c, category__c, retailer_category__c, current_date_time, competitor__c, owner_name__c, owner_phone__c, gstin__c, billingcity, billingstreet, billingpostalcode, billingcountry, billingstate,area__c,psm_id];
-                
                 tableName = 'Account';
-
                 accountDetail = await insertRecord(fieldsToBeInsert, fieldValues, tableName);
                 if(accountDetail.success){
 
@@ -452,12 +452,12 @@ async function add(req) {
 
                 }else{
                     response.status = 400;
-                    response.response = { "success": false, "message": "Error while create record. Please try again.", "data": {} };
+                    response.response = { "success": false, "message": "Error while create record. Please try again." };
                 }
                 return response;
             }else{
                 response.status = 400;
-                response.response = { "success": false, "message": "Mandatory parameter(s) are missing.", "data": {} };
+                response.response = { "success": false, "message": "Mandatory parameter(s) are missing."};
                 return response;     
             }
         }

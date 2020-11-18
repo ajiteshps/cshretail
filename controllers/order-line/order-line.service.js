@@ -11,11 +11,6 @@ module.exports = {
 };
 momenttz = require('moment-timezone');
 
-
-
-
-
-
 async function getAll(req) {
     try {
 

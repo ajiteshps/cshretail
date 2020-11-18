@@ -36,7 +36,6 @@ async function addevent(myDetails,event){
             if (eventDetail.success) {
                     
                     //dashboard.updateMonthlyTarget(req.headers.agentid,'event',dtUtil.currentMonth(),{'events__c':'events__c+1'});
-
                     response.response = { 'success': true, "data": eventDetail.data[0], "message": "Event created successfully." };
                     response.status = 200;
                     return response;

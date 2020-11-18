@@ -25,7 +25,6 @@ momenttz = require('moment-timezone');
  * @param {*} limit - record limit
  * @param {*} sellerid - account id 
  * @param {*} type Dealer/retailer
- 
  */
 async function getAll(req) {
     try {
@@ -155,10 +154,8 @@ async function add(req) {
             is_Validate = is_Validate ? validation.issetNotEmpty(event.expected_participation__c) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(event.venue_details__c) : false;
             is_Validate = is_Validate ? validation.isValidDate(event.event_date__c) : false;
-
             is_Validate = is_Validate ? validation.isPicklistValueValid(event.status__c, "Event", 'status__c', true) : false;
             is_Validate = is_Validate ? validation.isPicklistValueValid(event.type__c, "Event", 'type__c', true) : false;
-
             is_Validate = is_Validate ? validation.isPicklistValueValid(event.target_audience__c, "Event", 'target_audience__c', false) : false;
 
         } else {
