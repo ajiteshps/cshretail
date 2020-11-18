@@ -366,7 +366,7 @@ async function add(req) {
             if(is_Validate){
 
                 var competitor__c = null, owner_name__c = null, owner_phone__c = null, gstin__c = null, billingcity = null,  billingstreet = null,  billingpostalcode = null,  billingcountry = null, billingstate = null ,
-                name = null,   type1__c = 'Retailer', email__c=null, mobile_contact__c=null, potential_value__c=null, potential_retailer__c=null, dealer__c=null,category__c=null,retailer_category__c=null,area__c=null,asm_id=null;
+                name = null,   type1__c = 'Retailer_Sales_Service', email__c=null, mobile_contact__c=null, potential_value__c=null, potential_retailer__c=null, dealer__c=null,category__c=null,retailer_category__c=null,area__c=null,asm_id=null;
                 var psm_id = null;
                 var asm_id = null;
                 myDetails = await db.agentDetail(req.headers.agentid);
@@ -437,7 +437,7 @@ async function add(req) {
 
                 fieldsToBeInsert = ' asm__c, name,   type1__c, email__c, mobile_contact__c, potential_value__c, potential_retailer__c,category__c,retailer_category__c,createddate,competitor__c,owner_name__c,owner_phone__c,gstin__c,billingcity,billingstreet,billingpostalcode,billingcountry,billingstate,area__c,psm__c';
                 pg_id__c = uuidv4();
-                fieldValues = [ asm_id, req.body.name, 'Retailer', email__c, mobile_contact__c, potential_value__c, potential_retailer__c, category__c, retailer_category__c, current_date_time, competitor__c, owner_name__c, owner_phone__c, gstin__c, billingcity, billingstreet, billingpostalcode, billingcountry, billingstate,area__c,psm_id];
+                fieldValues = [ asm_id, req.body.name, 'Retailer_Sales_Service', email__c, mobile_contact__c, potential_value__c, potential_retailer__c, category__c, retailer_category__c, current_date_time, competitor__c, owner_name__c, owner_phone__c, gstin__c, billingcity, billingstreet, billingpostalcode, billingcountry, billingstate,area__c,psm_id];
                 
                 tableName = 'Account';
 
