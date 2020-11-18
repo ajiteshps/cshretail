@@ -433,13 +433,13 @@ async function add(req) {
                 }
 
                 var sql = "SELECT Id FROM salesforce.RecordType WHERE DeveloperName = 'Retailers_Sales_Service' ";
-                var response =  await client.query(sql);
-                if(resposne){
-                    var ID = response.Id
+                var sfid =  await client.query(sql);
+                if(sfid){
+                    var ID = sfid.Id
                     console.log(ID,'Response id');
                 }
 
-                fieldsToBeInsert = ' asm__c, name,   type1__c, email__c, mobile_contact__c, potential_value__c, potential_retailer__c,category__c,retailer_category__c,createddate,competitor__c,owner_name__c,owner_phone__c,gstin__c,billingcity,billingstreet,billingpostalcode,billingcountry,billingstate,area__c,psm__c';
+                fieldsToBeInsert = ' asm__c, name, type1__c, email__c, mobile_contact__c, potential_value__c, potential_retailer__c,category__c,retailer_category__c,createddate,competitor__c,owner_name__c,owner_phone__c,gstin__c,billingcity,billingstreet,billingpostalcode,billingcountry,billingstate,area__c,psm__c';
                 pg_id__c = uuidv4();
                 fieldValues = [ asm_id, req.body.name, ID, email__c, mobile_contact__c, potential_value__c, potential_retailer__c, category__c, retailer_category__c, current_date_time, competitor__c, owner_name__c, owner_phone__c, gstin__c, billingcity, billingstreet, billingpostalcode, billingcountry, billingstate,area__c,psm_id];
                 
