@@ -432,10 +432,10 @@ async function add(req) {
                     area__c =  req.body.area__c;
                 }
 
-                var sql = "SELECT Id FROM salesforce.RecordType WHERE DeveloperName = 'Retailers_Sales_Service";
+                var sql = "SELECT Id FROM salesforce.RecordType WHERE DeveloperName = 'Retailers_Sales_Service' ";
                 var resposne =  await client.query(sql);
                 if(resposne){
-                    var ID = response.id
+                    var ID = response.Id
                     console.log(ID,'Response id');
                 }
 
