@@ -73,7 +73,7 @@ async function getAll(req) {
                 if (validation.issetNotEmpty(req.query.area_id)) {
                     accountWhereClouse.push({ "fieldName": "area__c", "fieldValue": req.query.area_id });
                 }
-                
+
 
 
                 if (req.query.type == 'Retailer') {
@@ -166,11 +166,11 @@ async function getAll(req) {
 async function searchByLocation(req) {
     try {
         is_Validate = true;
-       
+
         is_Validate = is_Validate ? validation.issetNotEmpty(req.headers.agentid) : false;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.query.lat) : false;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.query.long) : false;
-        
+
         if (is_Validate) {
             var teamDetail = await db.getAsmHirarchy(req.headers.agentid);
 
@@ -324,24 +324,25 @@ async function search(search) {
     }
 }
 
-async function insertRecord(fieldsToBeInsert, fieldValues, tableName){
+async function insertRecord(fieldsToBeInsert, fieldValues, tableName) {
     sql = `INSERT into ${process.env.TABLE_SCHEMA_NAME}.${tableName} (${fieldsToBeInsert}) VALUES(`;
-    if(fieldValues.length > 0){
+    if (fieldValues.length > 0) {
         var counter = 1;
         fieldValues.forEach(element => {
-            if(counter > 1){ sql += `,`; }
+            if (counter > 1) { sql += `,`; }
             sql += `$${counter}`;
             counter++
         })
     }
     sql += `) RETURNING pg_id__c`;
     console.log('ADD Retailer sql >>> ', sql)
-    return await client.query(sql,fieldValues)
-        .then(data => { console.log(' data  >>>>> ',data)
-            if(data.rowCount > 0){
+    return await client.query(sql, fieldValues)
+        .then(data => {
+            console.log(' data  >>>>> ', data)
+            if (data.rowCount > 0) {
                 return { "success": true, "message": "", "data": data.rows };
 
-            }else{
+            } else {
                 return { "success": false, "message": "Error while create record. Please try again.", "data": {} };
             }
         }).catch(err => {
@@ -354,12 +355,11 @@ async function insertRecord(fieldsToBeInsert, fieldValues, tableName){
 
 async function add(req) {
     console.log(req.body,'DATA FROM FRONTEND');
-    var sql= "SELECT id from Account ";
-             var data = await  client.query(sql);
+    var sql= "SELECT id,Name,DeveloperName FROM RecordType ";
+            var data = await client.query(sql);
             console.log(data,'Account Data');
             return;
-
-            try {
+    try {
         if (!_.isEmpty(req.body)) {
             // Insert new Delear
             is_Validate = true;
@@ -368,103 +368,101 @@ async function add(req) {
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.billingstreet) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.billingcity) : false
             var current_date_time = moment().format("YYYY-MM-DD HH:mm:ss");
-            if(is_Validate){
+            if (is_Validate) {
 
-                var competitor__c = null, owner_name__c = null, owner_phone__c = null, gstin__c = null, billingcity = null,  billingstreet = null,  billingpostalcode = null,  billingcountry = null, billingstate = null ,
-                name = null,   type1__c = 'Retailer', email__c=null, mobile_contact__c=null, potential_value__c=null, potential_retailer__c=null, dealer__c=null,category__c=null,retailer_category__c=null,area__c=null,asm_id=null;
+                var competitor__c = null, owner_name__c = null, owner_phone__c = null, gstin__c = null, billingcity = null, billingstreet = null, billingpostalcode = null, billingcountry = null, billingstate = null,
+                    name = null, type1__c = 'Retailer', email__c = null, mobile_contact__c = null, potential_value__c = null, potential_retailer__c = null, dealer__c = null, category__c = null, retailer_category__c = null, area__c = null, asm_id = null;
                 var psm_id = null;
                 var asm_id = null;
                 myDetails = await db.agentDetail(req.headers.agentid);
-                
-                if(myDetails.rowCount > 0 && myDetails.rows[0].member_type == 'ASM'){
-                    
+
+                if (myDetails.rowCount > 0 && myDetails.rows[0].member_type == 'ASM') {
+
                     asm_id = req.headers.agentid;
-                }else if(myDetails.rowCount > 0 && myDetails.rows[0].member_type == 'PSM') {
+                } else if (myDetails.rowCount > 0 && myDetails.rows[0].member_type == 'PSM') {
                     psm_id = req.headers.agentid;
                     asm_id = myDetails.rows[0].manager_id;
-                } 
-
-                if(req.body.email__c!=undefined){
-                    email__c =  req.body.email__c;
-                }
-                if(req.body.mobile_contact__c!=undefined){
-                    mobile_contact__c =  req.body.mobile_contact__c;
-                }
-                if(req.body.potential_value__c!=undefined){
-                    potential_value__c =  req.body.potential_value__c;
-                }
-                if(req.body.potential_retailer__c!=undefined){
-                    potential_retailer__c =  req.body.potential_retailer__c;
-                }
-                if(req.body.dealer__c!=undefined){
-                    dealer__c =  req.body.dealer__c;
-                }
-                if(req.body.category__c!=undefined){
-                    category__c =  req.body.category__c;
-                }
-                if(req.body.retailer_category__c!=undefined){
-                    retailer_category__c =  req.body.retailer_category__c;
                 }
 
-                if(req.body.competitor__c!=undefined){
-                    competitor__c =  req.body.competitor__c;
+                if (req.body.email__c != undefined) {
+                    email__c = req.body.email__c;
                 }
-                if(req.body.owner_name__c!=undefined){
-                    owner_name__c =  req.body.owner_name__c;
+                if (req.body.mobile_contact__c != undefined) {
+                    mobile_contact__c = req.body.mobile_contact__c;
                 }
-                if(req.body.owner_phone__c!=undefined){
-                    owner_phone__c =  req.body.owner_phone__c;
+                if (req.body.potential_value__c != undefined) {
+                    potential_value__c = req.body.potential_value__c;
                 }
-                if(req.body.gstin__c!=undefined){
-                    gstin__c =  req.body.gstin__c;
+                if (req.body.potential_retailer__c != undefined) {
+                    potential_retailer__c = req.body.potential_retailer__c;
                 }
-                if(req.body.billingcity!=undefined){
-                    billingcity =  req.body.billingcity;
+                if (req.body.dealer__c != undefined) {
+                    dealer__c = req.body.dealer__c;
                 }
-                if(req.body.billingstreet!=undefined){
-                    billingstreet =  req.body.billingstreet;
+                if (req.body.category__c != undefined) {
+                    category__c = req.body.category__c;
                 }
-                if(req.body.billingpostalcode!=undefined){
-                    billingpostalcode =  req.body.billingpostalcode;
+                if (req.body.retailer_category__c != undefined) {
+                    retailer_category__c = req.body.retailer_category__c;
                 }
-                if(req.body.billingcountry!=undefined){
-                    billingcountry =  req.body.billingcountry;
+
+                if (req.body.competitor__c != undefined) {
+                    competitor__c = req.body.competitor__c;
                 }
-                if(req.body.billingstate!=undefined){
-                    billingstate =  req.body.billingstate;
+                if (req.body.owner_name__c != undefined) {
+                    owner_name__c = req.body.owner_name__c;
                 }
-                
-                if(req.body.area__c!=undefined && req.body.area__c!=""){
-                    area__c =  req.body.area__c;
+                if (req.body.owner_phone__c != undefined) {
+                    owner_phone__c = req.body.owner_phone__c;
                 }
-                
-                
-                fieldsToBeInsert = ' asm__c, name,  type1__c, email__c, mobile_contact__c, potential_value__c, potential_retailer__c,category__c,retailer_category__c,createddate,competitor__c,owner_name__c,owner_phone__c,gstin__c,billingcity,billingstreet,billingpostalcode,billingcountry,billingstate,area__c,psm__c';
+                if (req.body.gstin__c != undefined) {
+                    gstin__c = req.body.gstin__c;
+                }
+                if (req.body.billingcity != undefined) {
+                    billingcity = req.body.billingcity;
+                }
+                if (req.body.billingstreet != undefined) {
+                    billingstreet = req.body.billingstreet;
+                }
+                if (req.body.billingpostalcode != undefined) {
+                    billingpostalcode = req.body.billingpostalcode;
+                }
+                if (req.body.billingcountry != undefined) {
+                    billingcountry = req.body.billingcountry;
+                }
+                if (req.body.billingstate != undefined) {
+                    billingstate = req.body.billingstate;
+                }
+
+                if (req.body.area__c != undefined && req.body.area__c != "") {
+                    area__c = req.body.area__c;
+                }
+                fieldsToBeInsert = ' asm__c, name,type1__c, email__c, mobile_contact__c, potential_value__c, potential_retailer__c,category__c,retailer_category__c,createddate,competitor__c,owner_name__c,owner_phone__c,gstin__c,billingcity,billingstreet,billingpostalcode,billingcountry,billingstate,area__c,psm__c';
                 pg_id__c = uuidv4();
-                fieldValues = [ asm_id, req.body.name, 'Retailer', email__c, mobile_contact__c, potential_value__c, potential_retailer__c, category__c, retailer_category__c, current_date_time, competitor__c, owner_name__c, owner_phone__c, gstin__c, billingcity, billingstreet, billingpostalcode, billingcountry, billingstate,area__c,psm_id];
+                fieldValues = [asm_id, req.body.name, 'Retailer', email__c, mobile_contact__c, potential_value__c, potential_retailer__c, category__c, retailer_category__c, current_date_time, competitor__c, owner_name__c, owner_phone__c, gstin__c, billingcity, billingstreet, billingpostalcode, billingcountry, billingstate, area__c, psm_id];
                 tableName = 'Account';
                 accountDetail = await insertRecord(fieldsToBeInsert, fieldValues, tableName);
-                if(accountDetail.success){
+                if (accountDetail.success) {
 
                     response.status = 200;
                     response.response = { "success": true, "message": "Record created successfully.", "data": accountDetail.data };
 
                     // UPDATE TARGET AND ACHIEVEMENT
-                    dashboard.updateMonthlyTarget(req.headers.agentid,'seller',dtUtil.currentMonth(),{'new_counters__c':'new_counters__c+1'});
+                    dashboard.updateMonthlyTarget(req.headers.agentid, 'seller', dtUtil.currentMonth(), { 'new_counters__c': 'new_counters__c+1' });
 
-                }else{
+                } else {
                     response.status = 400;
                     response.response = { "success": false, "message": "Error while create record. Please try again." };
                 }
                 return response;
-            }else{
+            } else {
                 response.status = 400;
-                response.response = { "success": false, "message": "Mandatory parameter(s) are missing."};
-                return response;     
+                response.response = { "success": false, "message": "Mandatory parameter(s) are missing." };
+                return response;
             }
         }
     } catch (e) {
-        console.log(`EROR::: `,e)
+        console.log(`EROR::: `, e)
         response.status = 500;
         response.response = { "success": false, "message": "Internal server error.", "data": {} };
         return response;
@@ -474,30 +472,30 @@ async function add(req) {
 
 
 
-async function updateRecord(tableName, fieldValue, WhereClouse){
+async function updateRecord(tableName, fieldValue, WhereClouse) {
     try {
 
         //sql = `update ${process.env.TABLE_SCHEMA_NAME}.${tableName} set End_Day__c='true', End_Time__c='${attendance_time}' where Team__c='${agentid}' and Attendance_Date__c='${attendance_date}'`;
-        
-         var sql = `update ${process.env.TABLE_SCHEMA_NAME}.${tableName} set`;
+
+        var sql = `update ${process.env.TABLE_SCHEMA_NAME}.${tableName} set`;
 
 
         counter = 1;
         fieldValue.forEach(element => {
-            if(counter > 1)
-                sql+=`,`;
-            sql +=` ${element.field}='${element.value}'`;
+            if (counter > 1)
+                sql += `,`;
+            sql += ` ${element.field}='${element.value}'`;
             counter++;
         });
 
-        sql +=` where `;
+        sql += ` where `;
 
 
         counter = 1;
         WhereClouse.forEach(element => {
-            if(counter > 1)
-                sql+=` and `;
-            sql +=` ${element.field}='${element.value}'`;
+            if (counter > 1)
+                sql += ` and `;
+            sql += ` ${element.field}='${element.value}'`;
             counter++;
         });
 
@@ -505,10 +503,10 @@ async function updateRecord(tableName, fieldValue, WhereClouse){
 
         return await client.query(sql)
             .then(data => {
-                if(data.rowCount > 0){
-                    return { "success": true, "message": "Record updated successfully.","data":data };
-                }else{
-                    return { "success": false, "message": "Record updated failed.","data":{} };
+                if (data.rowCount > 0) {
+                    return { "success": true, "message": "Record updated successfully.", "data": data };
+                } else {
+                    return { "success": false, "message": "Record updated failed.", "data": {} };
                 }
             }).catch(err => {
                 console.log('ERROR:::: err 137 >>>> ', err);
@@ -517,82 +515,82 @@ async function updateRecord(tableName, fieldValue, WhereClouse){
     } catch (e) {
         return { "success": false, "message": "Error while update record." };
     }
-  
+
 }
 
 async function updateSellerInfo(req) {
     try {
         if (!_.isEmpty(req.body)) {
             // Insert new Delear
-            
+
             is_Validate = true;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.seller_id) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.name) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.mobile_contact__c) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.billingstreet) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.billingcity) : false;
-           
 
-            if(is_Validate){
+
+            if (is_Validate) {
 
                 var tableName = `account`;
                 var fieldValue = [];
                 var WhereClouse = [];
-                
+
                 fieldValue.push({ "field": "name", "value": req.body.name });
                 fieldValue.push({ "field": "mobile_contact__c", "value": req.body.mobile_contact__c });
-                
-                if(validation.isset(req.body.potential_value__c))
+
+                if (validation.isset(req.body.potential_value__c))
                     fieldValue.push({ "field": "potential_value__c", "value": req.body.potential_value__c });
-                
-                if(validation.isset(req.body.category__c))
+
+                if (validation.isset(req.body.category__c))
                     fieldValue.push({ "field": "category__c", "value": req.body.category__c });
-                
-                if(validation.isset(req.body.dealer__c))
+
+                if (validation.isset(req.body.dealer__c))
                     fieldValue.push({ "field": "dealer__c", "value": req.body.dealer__c });
 
-                if(validation.isset(req.body.email))
+                if (validation.isset(req.body.email))
                     fieldValue.push({ "field": "email__c", "value": req.body.email__c });
-                
-                if(validation.isset(req.body.potential_retailer))
+
+                if (validation.isset(req.body.potential_retailer))
                     fieldValue.push({ "field": "potential_retailer__c", "value": req.body.potential_retailer__c });
-                
-                if(validation.isset(req.body.retailer_category))
+
+                if (validation.isset(req.body.retailer_category))
                     fieldValue.push({ "field": "retailer_category__c", "value": req.body.retailer_category__c });
-                
-                if(validation.isset(req.body.competitor__c))
+
+                if (validation.isset(req.body.competitor__c))
                     fieldValue.push({ "field": "competitor__c", "value": req.body.competitor__c });
-                
-                if(validation.isset(req.body.owner_name__c))
+
+                if (validation.isset(req.body.owner_name__c))
                     fieldValue.push({ "field": "owner_name__c", "value": req.body.owner_name__c });
-                
-                if(validation.isset(req.body.owner_phone__c))
+
+                if (validation.isset(req.body.owner_phone__c))
                     fieldValue.push({ "field": "owner_phone__c", "value": req.body.owner_phone__c });
-                
-                if(validation.isset(req.body.gstin__c))
+
+                if (validation.isset(req.body.gstin__c))
                     fieldValue.push({ "field": "gstin__c", "value": req.body.gstin__c });
-                
+
 
                 // Billing Fields
-                if(validation.isset(req.body.billingcity))
+                if (validation.isset(req.body.billingcity))
                     fieldValue.push({ "field": "billingcity", "value": req.body.billingcity });
-                
-                if(validation.isset(req.body.billingstreet))
+
+                if (validation.isset(req.body.billingstreet))
                     fieldValue.push({ "field": "billingstreet", "value": req.body.billingstreet });
-                
-                if(validation.isset(req.body.billingstate))
+
+                if (validation.isset(req.body.billingstate))
                     fieldValue.push({ "field": "billingstate", "value": req.body.billingstate });
-                
-                if(validation.isset(req.body.billingcountry))
+
+                if (validation.isset(req.body.billingcountry))
                     fieldValue.push({ "field": "billingcountry", "value": req.body.billingcountry });
-                
-                if(validation.isset(req.body.billingpostalcode))
+
+                if (validation.isset(req.body.billingpostalcode))
                     fieldValue.push({ "field": "billingpostalcode", "value": req.body.billingpostalcode });
-                
-                
-                if(validation.issetNotEmpty(req.body.area__c))
+
+
+                if (validation.issetNotEmpty(req.body.area__c))
                     fieldValue.push({ "field": "area__c", "value": req.body.area__c });
-                
+
 
 
                 WhereClouse.push({ "field": "sfid", "value": req.body.seller_id });
@@ -600,27 +598,27 @@ async function updateSellerInfo(req) {
 
                 accountDetail = await updateRecord(tableName, fieldValue, WhereClouse);
 
-                if(accountDetail.success && accountDetail.data!=undefined && accountDetail.data.rowCount > 0){
+                if (accountDetail.success && accountDetail.data != undefined && accountDetail.data.rowCount > 0) {
                     response.status = 200;
-                }else{
+                } else {
                     response.status = 400;
                 }
-                if(accountDetail.data!=undefined){
+                if (accountDetail.data != undefined) {
                     delete accountDetail.data;
                 }
                 response.response = accountDetail;
                 return response;
 
 
-            }else{
+            } else {
                 response.status = 400;
                 response.response = { "success": false, "message": "Mandatory parameter(s) are missing.", "data": {} };
-                return response;  
+                return response;
             }
 
         }
     } catch (e) {
-        console.log(`EROR::: `,e)
+        console.log(`EROR::: `, e)
         response.status = 500;
         response.response = { "success": false, "message": "Internal server error.", "data": {} };
         return response;
@@ -632,13 +630,13 @@ async function updateLocation(req) {
     try {
         if (!_.isEmpty(req.body)) {
             // Insert new Delear
-            
+
             is_Validate = true;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.seller_id) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.lat) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.long) : false;
-            
-            if(is_Validate){
+
+            if (is_Validate) {
 
                 var tableName = `account`;
                 var fieldValue = [];
@@ -646,33 +644,33 @@ async function updateLocation(req) {
 
                 fieldValue.push({ "field": "Location__Latitude__s", "value": req.body.lat });
                 fieldValue.push({ "field": "Location__Longitude__s", "value": req.body.long });
-                
+
                 WhereClouse.push({ "field": "sfid", "value": req.body.seller_id });
 
 
                 accountDetail = await updateRecord(tableName, fieldValue, WhereClouse);
 
-                if(accountDetail.success && accountDetail.data!=undefined && accountDetail.data.rowCount > 0){
+                if (accountDetail.success && accountDetail.data != undefined && accountDetail.data.rowCount > 0) {
                     response.status = 200;
-                }else{
+                } else {
                     response.status = 400;
                 }
-                if(accountDetail.data!=undefined){
+                if (accountDetail.data != undefined) {
                     delete accountDetail.data;
                 }
                 response.response = accountDetail;
                 return response;
 
 
-            }else{
+            } else {
                 response.status = 400;
                 response.response = { "success": false, "message": "Mandatory parameter(s) are missing.", "data": {} };
-                return response;  
+                return response;
             }
 
         }
     } catch (e) {
-        console.log(`EROR::: `,e)
+        console.log(`EROR::: `, e)
         response.status = 500;
         response.response = { "success": false, "message": "Internal server error.", "data": {} };
         return response;
