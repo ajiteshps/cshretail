@@ -356,8 +356,8 @@ async function insertRecord(fieldsToBeInsert, fieldValues, tableName) {
 async function add(req) {
     console.log(req.body,'DATA FROM FRONTEND');
     var sql= "SELECT id,Name,DeveloperName FROM RecordType ";
-            var data = await client.query(sql);
-            console.log(data,'Account Data');
+    var sDetail = await client.query(sql);
+            console.log(sDetail,'Account Data');
             return;
     try {
         if (!_.isEmpty(req.body)) {
