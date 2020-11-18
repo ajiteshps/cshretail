@@ -358,7 +358,8 @@ async function add(req) {
             // Insert new Delear
             var sql = "SELECT * FORM salesforce.account";
             var data =  await client.query(sql);
-            console.log(data);
+            console.log(data,'ACCOUNT DATA');
+            return;
             is_Validate = true;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.name) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.mobile_contact__c) : false;
