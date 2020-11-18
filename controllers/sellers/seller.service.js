@@ -353,8 +353,10 @@ async function insertRecord(fieldsToBeInsert, fieldValues, tableName){
 
 
 async function add(req) {
+    console.log(req.body,'DATA FROM FRONTEND');
     var sql= "SELECT * FROM Account";
              var data = await  getDbResult(sql);
+          
             console.log(data,'Account Data');
             return;
     try {
