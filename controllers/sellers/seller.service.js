@@ -433,7 +433,7 @@ async function add(req) {
                 }
 
                 var sql = "SELECT Id FROM salesforce.RecordType WHERE DeveloperName = 'Retailers_Sales_Service' ";
-                var resposne =  await client.query(sql);
+                var response =  await client.query(sql);
                 if(resposne){
                     var ID = response.Id
                     console.log(ID,'Response id');
