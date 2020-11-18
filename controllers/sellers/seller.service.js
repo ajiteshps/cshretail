@@ -354,12 +354,12 @@ async function insertRecord(fieldsToBeInsert, fieldValues, tableName){
 
 async function add(req) {
     console.log(req.body,'DATA FROM FRONTEND');
-    var sql= "SELECT * FROM Account";
+    var sql= "SELECT id from Account ";
              var data = await  client.query(sql);
-          
             console.log(data,'Account Data');
             return;
-    try {
+
+            try {
         if (!_.isEmpty(req.body)) {
             // Insert new Delear
             is_Validate = true;
