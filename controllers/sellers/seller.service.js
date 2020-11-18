@@ -434,10 +434,7 @@ async function add(req) {
 
                 var sql = "SELECT Id FROM salesforce.RecordType WHERE DeveloperName = 'Retailers_Sales_Service' ";
                 var sfid =  await client.query(sql);
-                if(sfid){
-                    var ID = sfid.Id
-                    console.log(ID,'Response id');
-                }
+                console.log(sfid,'NEW RECORD TYPE ID');
 
                 fieldsToBeInsert = ' asm__c, name, type1__c, email__c, mobile_contact__c, potential_value__c, potential_retailer__c,category__c,retailer_category__c,createddate,competitor__c,owner_name__c,owner_phone__c,gstin__c,billingcity,billingstreet,billingpostalcode,billingcountry,billingstate,area__c,psm__c';
                 pg_id__c = uuidv4();
