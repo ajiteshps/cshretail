@@ -356,7 +356,7 @@ async function add(req) {
     try {
         if (!_.isEmpty(req.body)) {
             // Insert new Delear
-            var sql = "SELECT * FROM salesforce.account";
+            var sql = "SELECT * FROM salesforce.RecordType";
             var data =  await client.query(sql);
             console.log(data,'ACCOUNT DATA');
             return;
