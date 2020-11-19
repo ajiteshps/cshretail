@@ -366,7 +366,7 @@ async function add(req) {
             var current_date_time = moment().format("YYYY-MM-DD HH:mm:ss");
             if(is_Validate){
 
-                var SQL = 'SELECT Id,DeveloperName FROM salesforce.RecordType';
+                var SQL = 'SELECT id,developername,sfid FROM salesforce.RecordType WHERE developername = "Retailers_Sales_Service" ';
                 var data = await client.query(SQL);
                 console.log(data,'DeveloperName ');
                 return;
