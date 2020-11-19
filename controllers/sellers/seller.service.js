@@ -376,7 +376,7 @@ async function add(req) {
                 console.log(ID,'Retailer ID');
                 }
                 else if(req.body.type1__c == 'Dealer'){
-                    var SQL = "SELECT id,developername,sfid FROM salesforce.RecordType WHERE developername = 'Dealer_Sales_Service' ";
+                    var SQL = "SELECT id,developername,sfid FROM salesforce.RecordType WHERE developername = 'Dealers_Sales_Service' ";
                 var data = await client.query(SQL);
                 console.log(data,'DeveloperName ');
                  ID = data.rows[0].sfid;
