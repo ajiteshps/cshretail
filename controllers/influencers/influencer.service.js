@@ -167,7 +167,6 @@ async function add(req) {
             is_Validate = is_Validate ? validation.issetNotEmpty(contactObj.title) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(contactObj.email) : false;
             console.log('is_Validate .. 2 ', is_Validate);
-            
             //is_Validate = is_Validate ? validation.isPicklistValueValid(contactObj.category__c,'Influencer','category__c',true) : false;
             is_Validate = is_Validate ? validation.isPicklistValueValid(contactObj.potential__c,'Influencer','potential__c',false) : false;
             console.log('is_Validate .. ', is_Validate);

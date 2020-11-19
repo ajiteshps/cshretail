@@ -538,15 +538,12 @@ async function updateSellerInfo(req) {
     try {
         if (!_.isEmpty(req.body)) {
             // Insert new Delear
-            
             is_Validate = true;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.seller_id) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.name) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.mobile_contact__c) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.billingstreet) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.billingcity) : false;
-           
-
             if(is_Validate){
 
                 var tableName = `account`;
