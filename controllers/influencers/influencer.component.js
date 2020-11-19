@@ -65,7 +65,7 @@ async function editContact(myDetails,contactObj){
             if(validation.issetNotEmpty(contactObj.lastname))
                 fieldValue.push({ "field": "lastname", "value": contactObj.lastname });
             if(validation.issetNotEmpty(contactObj.lastname))
-            fieldValue.push({ "field": "asm__c", "value": contactObj.asm__c });
+            fieldValue.push({ "field": "asm__c", "value": (contactObj.asm__c ? contactObj.asm__c:null) });
             
             if(validation.issetNotEmpty(contactObj.area__c))
                 fieldValue.push({ "field": "area__c", "value": contactObj.area__c });
