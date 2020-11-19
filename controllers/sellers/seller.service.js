@@ -39,6 +39,8 @@ async function getAll(req) {
         is_Validate = is_Validate ? validation.issetNotEmpty(req.query.limit) : false;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.headers.agentid) : false;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.query.type) : false;
+
+
         if (is_Validate) {
 
             // Check is valid ASM/PSM
@@ -355,6 +357,7 @@ async function add(req) {
     try {
         if (!_.isEmpty(req.body)) {
             // Insert new Delear
+           
             is_Validate = true;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.name) : false;
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.mobile_contact__c) : false;
@@ -362,14 +365,13 @@ async function add(req) {
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.billingcity) : false
             var current_date_time = moment().format("YYYY-MM-DD HH:mm:ss");
             if(is_Validate){
-                var id = 'SELECT Id FROM salesforce.RecordType WHERE DeveloperName = "Retailers_Sales_Service"';
-                var responseData = await client.query(id);
-                if(responseData)
-                    console.log(responseData,'RECORD ID from query');
-                    return;
-                    
+                var SQL = 'SELECT Id FROM salesforce.RecordType WHERE DeveloperName = "Retailers_Sales_Service"';
+                var data = await client.query(SQL);
+                console.log(data);
+                return;
+
                 var competitor__c = null, owner_name__c = null, owner_phone__c = null, gstin__c = null, billingcity = null,  billingstreet = null,  billingpostalcode = null,  billingcountry = null, billingstate = null ,
-                name = null,   type1__c = 'Retailer', RecordTypeId = ID  ,email__c=null, mobile_contact__c=null, potential_value__c=null, potential_retailer__c=null, dealer__c=null,category__c=null,retailer_category__c=null,area__c=null,asm_id=null;
+                name = null,   type1__c = 'Retailer', RecordTypeId ='0122w000000NfMlAAK' ,email__c=null, mobile_contact__c=null, potential_value__c=null, potential_retailer__c=null, dealer__c=null,category__c=null,retailer_category__c=null,area__c=null,asm_id=null;
                 var psm_id = null;
                 var asm_id = null;
                 myDetails = await db.agentDetail(req.headers.agentid);
