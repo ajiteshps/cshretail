@@ -362,10 +362,10 @@ async function add(req) {
             is_Validate = is_Validate ? validation.issetNotEmpty(req.body.billingcity) : false
             var current_date_time = moment().format("YYYY-MM-DD HH:mm:ss");
             if(is_Validate){
-                var id = `SELECT Id FROM salesforce.RecordType WHERE DeveloperName = 'Retailers_Sales_Service'`;
+                var id = 'SELECT Id FROM salesforce.RecordType WHERE DeveloperName = "Retailers_Sales_Service"';
                 var responseData = await client.query(id);
                 if(responseData)
-                    console.log(responseData,'ID');
+                    console.log(responseData,'RECORD ID from query');
                     return;
                     
                 var competitor__c = null, owner_name__c = null, owner_phone__c = null, gstin__c = null, billingcity = null,  billingstreet = null,  billingpostalcode = null,  billingcountry = null, billingstate = null ,
