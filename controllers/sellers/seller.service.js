@@ -388,7 +388,7 @@ async function add(req) {
                 var psm_id = null;
                 var asm_id = null;
                 myDetails = await db.agentDetail(req.headers.agentid);
-                
+                console.log(myDetails,'ASM PSM');
                 if(myDetails.rowCount > 0 && myDetails.rows[0].member_type == 'ASM'){
                     
                     asm_id = req.headers.agentid;
