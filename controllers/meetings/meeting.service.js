@@ -35,6 +35,7 @@ var offset = '0'; limit = '1000';
  * @param {*} endDate : mandatory
  */
 async function getAll(req) {
+console.log(req.body);
     try {
 
         console.log(req.headers);

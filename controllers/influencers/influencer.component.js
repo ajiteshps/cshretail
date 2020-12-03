@@ -5,8 +5,6 @@ var response = { "status": 200, "response": "" };
 var validation = require(`${PROJECT_DIR}/utility/validation`);
 
 
-
-
 module.exports = {
     addContact,
     editContact
