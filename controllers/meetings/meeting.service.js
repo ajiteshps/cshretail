@@ -35,9 +35,8 @@ var offset = '0'; limit = '1000';
  * @param {*} endDate : mandatory
  */
 async function getAll(req) {
-console.log(req.query,'data from mobile');
+    console.log(req.query,'data from mobile');
     try {
-
         console.log(req.headers);
         is_Validate = true;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.headers.agentid) : false;
