@@ -404,6 +404,7 @@ async function getAllAsm(req) {
 async function getAllPsm(req) {
     try {
         if (validation.issetNotEmpty(req.headers.agentid)) {
+
             var teamDetail = await db.getAsmHirarchy(req.headers.agentid);
             console.log('teamDetail >>> ', teamDetail);
             if (teamDetail.success) {
@@ -432,20 +433,16 @@ async function getAllPsm(req) {
 
                 orderBy = '',
                 WhereClouse = [];
+                var id = 'a1J2w000000j1kqEAA';
+                WhereClouse.push({ "fieldName": "manager__c", "fieldValue": teamDetail.id, "type": "IN" })
                 
-                WhereClouse.push({ "fieldName": "manager__c", "fieldValue": teamDetail.ASM, "type": "IN" })
-                
+
                 // if (validation.issetNotEmpty(req.headers.agentid)) {
                 //     WhereClouse.push({ "fieldName": "manager__c", "fieldValue": req.headers.agentid })
                 // }
-
                 sql = db.SelectAllQry(fieldsArray, tableName, WhereClouse, offset, limit);
                 console.log(`INFO:: GET ALL ASM ${sql}`);
-            
-    
-       
                 var asmList = await client.query(sql);
-
                 console.log('asmList >>> ', asmList);
                 if (asmList.rowCount > 0) {
                     response.status = 200;
@@ -454,7 +451,7 @@ async function getAllPsm(req) {
 
                 } else {
                     response.status = 400;
-                    response.response = { "success": false, "message": "No Data Found in Database", "data": {} };
+                    response.response = { "success": false, "message": "No Record found.", "data": {} };
                     return response;
 
                 }
