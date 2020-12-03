@@ -152,10 +152,11 @@ async function getAll(req) {
 
                 console.log(`INFO::: All Visits =======   ${sql}`);
                 var meetings = await client.query(sql);
-
+                console.log(meetings,'mettings');
                 if (meetings.rowCount != undefined && meetings.rowCount > 0) {
                     // Get Dealer and Retailed Id array
                     var sellerdetails = await component.getAllSellersId(meetings.rows);
+
                     // Get Retailers Order
                     var retailerOrders = await component.getRetailerOrder(sellerdetails);
                     // Get Dealers order
