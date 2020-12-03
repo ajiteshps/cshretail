@@ -454,7 +454,7 @@ async function getAllPsm(req) {
 
                 } else {
                     response.status = 400;
-                    response.response = { "success": false, "message": "No Data Found in Database", "data": {} };
+                    response.response = { "success": false, "message": "No Data Found in Database", "data": result };
                     return response;
 
                 }
