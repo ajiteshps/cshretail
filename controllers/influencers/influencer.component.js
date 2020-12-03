@@ -1,4 +1,5 @@
 var db = require(`${PROJECT_DIR}/utility/selectQueries`);
+
 const uuidv4 = require('uuid/v4');
 var dtUtil = require(`${PROJECT_DIR}/utility/dateUtility`);
 var response = { "status": 200, "response": "" };
@@ -15,10 +16,15 @@ async function addContact(myDetails,contactObj){
         if (myDetails.rowCount > 0) {
             
             contactFields =`firstname, lastname,pg_id__c,asm__c,area__c,attached_dealer__c, attached_retailer__c, business_so_far__c, business_this_month__c,meets_attended__c,psm__c,phone,potential__c,status__c,title,email,createddate`; 
+            var sql2 = `Select id from RecordType where SobjectType ='Contact' AND DeveloperName='other'`; 
+            var result = await db.query(sql2);
+            console.log(result,'record type id');
+
             var UUID_Contact = uuidv4();
             var createdDate = dtUtil.todayDatetime();
-            contactFieldsValues =[contactObj.firstname,  contactObj.lastname, UUID_Contact, contactObj.asm__c, contactObj.area__c, contactObj.attached_dealer__c, contactObj.attached_retailer__c, contactObj.business_so_far__c, contactObj.business_this_month__c, contactObj.meets_attended__c, contactObj.psm__c, contactObj.phone, contactObj.potential__c, contactObj.status__c, contactObj.title,contactObj.email, createdDate];
             
+            contactFieldsValues =[contactObj.firstname,  contactObj.lastname, UUID_Contact, contactObj.asm__c, contactObj.area__c, contactObj.attached_dealer__c, contactObj.attached_retailer__c, contactObj.business_so_far__c, contactObj.business_this_month__c, contactObj.meets_attended__c, contactObj.psm__c, contactObj.phone, contactObj.potential__c, contactObj.status__c, contactObj.title,contactObj.email, createdDate];
+
             tableName = 'contact';
             var contactDetail = await db.insertRecord(contactFields, contactFieldsValues, tableName, `, pg_id__c`);
            
