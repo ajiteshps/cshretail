@@ -15,9 +15,7 @@ async function addContact(myDetails,contactObj){
         if (myDetails.rowCount > 0) {
             
             contactFields =`firstname, lastname,RecordTypeId,pg_id__c,asm__c,area__c,attached_dealer__c, attached_retailer__c, business_so_far__c, business_this_month__c,meets_attended__c,psm__c,phone,potential__c,status__c,title,email,createddate`; 
-            var sql3 = `SELECT * from salesforce.contact`;
-            var result2 = await client.query(sql3);
-            console.log(result2,'CONATCT FIELDS');
+            
             var sql2 = `Select sfid from salesforce.RecordType WHERE  developername='other' AND name='other'`; 
             var result = await client.query(sql2);
             console.log(result,'record type id');
