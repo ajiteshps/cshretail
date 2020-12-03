@@ -16,10 +16,9 @@ async function addContact(myDetails,contactObj){
             
             contactFields =`firstname, lastname,pg_id__c,asm__c,area__c,attached_dealer__c, attached_retailer__c, business_so_far__c, business_this_month__c,meets_attended__c,psm__c,phone,potential__c,status__c,title,email,createddate`; 
            
-            var sql2 = `Select id from salesforce.RecordType where SobjectType ='Contact' AND DeveloperName='other'`; 
+            var sql2 = `Select id,SobjectType,DeveloperName from salesforce.RecordType where SobjectType ='Contact' AND DeveloperName='other'`; 
             var result = await client.query(sql2);
             console.log(result,'record type id');
-
             var UUID_Contact = uuidv4();
             var createdDate = dtUtil.todayDatetime();
             
