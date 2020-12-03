@@ -433,7 +433,7 @@ async function getAllPsm(req) {
                 orderBy = '',
                 WhereClouse = [];
                 
-                WhereClouse.push({ "fieldName": "manager__c", "fieldValue": teamDetail.PSM, "type": "IN" })
+                WhereClouse.push({ "fieldName": "manager__c", "fieldValue": teamDetail.ASM, "type": "IN" })
                 
                 // if (validation.issetNotEmpty(req.headers.agentid)) {
                 //     WhereClouse.push({ "fieldName": "manager__c", "fieldValue": req.headers.agentid })
