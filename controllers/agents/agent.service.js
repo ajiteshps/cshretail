@@ -441,7 +441,9 @@ async function getAllPsm(req) {
 
                 sql = db.SelectAllQry(fieldsArray, tableName, WhereClouse, offset, limit);
                 console.log(`INFO:: GET ALL ASM ${sql}`);
-              
+              var sql2 = `SELECT * FROM team__c`;
+              var result = await client.query(sql2);
+              console.log(result,'TOTAL DATA');
                 var asmList = await client.query(sql);
 
                 console.log('asmList >>> ', asmList);
