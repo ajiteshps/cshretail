@@ -14,16 +14,15 @@ async function addContact(myDetails,contactObj){
         
         if (myDetails.rowCount > 0) {
             
-            contactFields =`firstname, lastname,record_type_developer_name__c,RecordTypeId,pg_id__c,asm__c,area__c,attached_dealer__c, attached_retailer__c, business_so_far__c, business_this_month__c,meets_attended__c,psm__c,phone,potential__c,status__c,title,email,createddate`; 
+            contactFields =`firstname, lastname,RecordTypeId,pg_id__c,asm__c,area__c,attached_dealer__c, attached_retailer__c, business_so_far__c, business_this_month__c,meets_attended__c,psm__c,phone,potential__c,status__c,title,email,createddate`; 
             var sql2 = `Select sfid from salesforce.RecordType WHERE  developername='other' AND name='other'`; 
             var result = await client.query(sql2);
             console.log(result,'record type id');
             ID = result.rows[0].sfid;
-            var other = "other";
             var UUID_Contact = uuidv4();
             var createdDate = dtUtil.todayDatetime();
             
-            contactFieldsValues =[contactObj.firstname, contactObj.lastname,other,ID, UUID_Contact, contactObj.asm__c, contactObj.area__c, contactObj.attached_dealer__c, contactObj.attached_retailer__c, contactObj.business_so_far__c, contactObj.business_this_month__c, contactObj.meets_attended__c, contactObj.psm__c, contactObj.phone, contactObj.potential__c, contactObj.status__c, contactObj.title,contactObj.email, createdDate];
+            contactFieldsValues =[contactObj.firstname, contactObj.lastname,ID, UUID_Contact, contactObj.asm__c, contactObj.area__c, contactObj.attached_dealer__c, contactObj.attached_retailer__c, contactObj.business_so_far__c, contactObj.business_this_month__c, contactObj.meets_attended__c, contactObj.psm__c, contactObj.phone, contactObj.potential__c, contactObj.status__c, contactObj.title,contactObj.email, createdDate];
 
             tableName = 'contact';
             var contactDetail = await db.insertRecord(contactFields, contactFieldsValues, tableName, `, pg_id__c`);
