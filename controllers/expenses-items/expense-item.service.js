@@ -1752,17 +1752,18 @@ async function expenseItemByTour(req) {
 
             ];
             var sql = db.fetchAllWithJoinQry(fields, tableName, joins, WhereClouse, offset, limit, '');
-
+            var sql2 = "SELECT * FROM salesforce.Tour_SS_c";
             console.log(`INFO::: Get Tour = ${sql}`);
 
             var tours = await client.query(sql);
-
+            var toursTotal = await client.query(sql2);
+            console.log('TOTAL DATA',toursTotal);
             if (tours.rowCount != undefined && tours.rowCount > 0) {
                 response.response = { 'success': true, "data": { "tours": tours.rows } };
                 response.status = 200;
                 return response;
             } else {
-                response.response = { 'success': false, "data": { "tours": [] }, "message": "No record found." };
+                response.response = { 'success': false, "data": toursTotal, "message": "No record found." };
                 response.status = 400;
                 return response;
             }
