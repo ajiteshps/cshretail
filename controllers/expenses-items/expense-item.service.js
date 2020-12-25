@@ -1763,8 +1763,8 @@ async function expenseItemByTour(req) {
                 response.status = 200;
                 return response;
             } else {
-                response.response = { 'success': false, "data": toursTotal, "message": "No record found." };
-                response.status = 400;
+                response.response = { 'success': true, "data": toursTotal.rows, "message": "No record found." };
+                response.status = 200;
                 return response;
             }
         } else {
