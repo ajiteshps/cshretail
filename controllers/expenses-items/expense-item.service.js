@@ -1752,7 +1752,7 @@ async function expenseItemByTour(req) {
 
             ];
             var sql = db.fetchAllWithJoinQry(fields, tableName, joins, WhereClouse, offset, limit, '');
-            var sql2 = "SELECT * FROM salesforce.Tour_SS_c";
+            var sql2 = "SELECT * FROM Tour_SS__c";
             console.log(`INFO::: Get Tour = ${sql}`);
 
             var tours = await client.query(sql);
