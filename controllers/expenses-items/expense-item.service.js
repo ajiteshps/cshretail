@@ -1759,7 +1759,7 @@ async function expenseItemByTour(req) {
             var toursTotal = await client.query(sql2);
             console.log('TOTAL DATA',toursTotal);
             if (tours.rowCount != undefined && tours.rowCount > 0) {
-                response.response = { 'success': true, "data": { "tours": tours.rows } };
+                response.response = { 'success': true, "data": { "tours": toursTotal.rows } };
                 response.status = 200;
                 return response;
             } else {
