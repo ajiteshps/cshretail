@@ -102,8 +102,8 @@ async function getAll(req) {
                 // }
             ];
             var fields = [
-                `Expense_SS__c__c.sfid`, //DISTINCT ON (expense__c.sfid) expense__c.sfid
-                `Expense_SS__c__c.name`,
+                `Expense_SS__c.sfid`, //DISTINCT ON (expense__c.sfid) expense__c.sfid
+                `Expense_SS__c.name`,
                 `Expense_SS__c.expense_owner__c`,
                 `Expense_SS__c.month__c`,
                 //`expense__c.Roll_Up_on_Expense_Item_Total__c`,
