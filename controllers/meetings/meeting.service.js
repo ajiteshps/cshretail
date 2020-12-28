@@ -35,8 +35,8 @@ var offset = '0'; limit = '1000';
  * @param {*} endDate : mandatory
  */
 async function getAll(req) {
+    console.log(req.query,'data from mobile');
     try {
-
         console.log(req.headers);
         is_Validate = true;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.headers.agentid) : false;
@@ -152,10 +152,11 @@ async function getAll(req) {
 
                 console.log(`INFO::: All Visits =======   ${sql}`);
                 var meetings = await client.query(sql);
-
+                console.log(meetings,'mettings');
                 if (meetings.rowCount != undefined && meetings.rowCount > 0) {
                     // Get Dealer and Retailed Id array
                     var sellerdetails = await component.getAllSellersId(meetings.rows);
+
                     // Get Retailers Order
                     var retailerOrders = await component.getRetailerOrder(sellerdetails);
                     // Get Dealers order

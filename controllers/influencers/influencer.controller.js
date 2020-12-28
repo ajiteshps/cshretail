@@ -21,6 +21,7 @@ module.exports = router;
  * @version 1
  * @email rohit.ramawat@zoxima.com
  */
+
 function getAll(req, res, next) {
     try {
         

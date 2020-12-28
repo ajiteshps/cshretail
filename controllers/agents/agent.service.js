@@ -442,6 +442,7 @@ async function getAllPsm(req) {
                 // }
                 sql = db.SelectAllQry(fieldsArray, tableName, WhereClouse, offset, limit);
                 console.log(`INFO:: GET ALL ASM ${sql}`);
+                
                 var asmList = await client.query(sql);
                 console.log('asmList >>> ', asmList);
                 if (asmList.rowCount > 0) {

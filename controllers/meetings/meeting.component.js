@@ -171,7 +171,7 @@ async function mapOrdersWithSellers_OLD(visits, retailerOrders, dealerOrders) {
  * @param {*} sellerdetails array of account sfid
  */
 async function getRetailerOrder(sellerdetails) {
-    //console.log(sellerdetails,'retailer order');
+    console.log(sellerdetails,'retailer order');
     if (sellerdetails.retailer.length > 0) {
         retailer_ids = sellerdetails.retailer.join("','")
         sql = `SELECT DISTINCT on (retailer__c) retailer__c ,name,sfid,date_part('epoch'::text, Order_Date__c) * (1000)::double precision as Order_Date__c,dealer__c,order_value__c FROM ${process.env.TABLE_SCHEMA_NAME}.Order__c where retailer__c IN ('${retailer_ids}')`;
