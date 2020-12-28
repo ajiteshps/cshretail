@@ -1683,9 +1683,9 @@ async function expenseItemByTour(req) {
             
             WhereClouse.push({ "fieldName": "tour_owner__c", "fieldValue": req.headers.agentid });
             WhereClouse.push({ "fieldName": "tour_status__c", "fieldValue": "Approved" });
-            WhereClouse.push({ "fieldName": "expense_item.expense_type__c", "fieldValue": "Outstation Expense" });
-            WhereClouse.push({ "fieldName": "expense_item.outstation_type__c", "fieldValue": "Local Expense" });
-            WhereClouse.push({ "fieldName": "expense_item.visits__c", "type": "NOTNULL" });
+            // WhereClouse.push({ "fieldName": "expense_item.expense_type__c", "fieldValue": "Outstation Expense" });
+            // WhereClouse.push({ "fieldName": "expense_item.outstation_type__c", "fieldValue": "Local Expense" });
+            // WhereClouse.push({ "fieldName": "expense_item.visits__c", "type": "NOTNULL" });
             // if (validation.issetNotEmpty(req.query.tour_type) && req.query.tour_type == 'self') {
             // } else if (validation.issetNotEmpty(req.query.tour_type) && req.query.tour_type == 'other') {
             //     WhereClouse.push({ "fieldName": "tour_approver__c", "fieldValue": req.headers.agentid });
@@ -1763,7 +1763,7 @@ async function expenseItemByTour(req) {
                 response.status = 200;
                 return response;
             } else {
-                response.response = { 'success': true, "data": [], "message": "No record found." };
+                response.response = { 'success': false, "data": [], "message": "No record found." };
                 response.status = 400;
                 return response;
             }
