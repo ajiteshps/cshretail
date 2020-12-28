@@ -1757,9 +1757,9 @@ async function expenseItemByTour(req) {
 
             var tours = await client.query(sql);
 
-            console.log('TOTAL DATA',toursTotal);
+       
             if (tours.rowCount != undefined && tours.rowCount > 0) {
-                response.response = { 'success': true, "data": { "tours": toursTotal.rows } };
+                response.response = { 'success': true, "data": { "tours": tours.rows } };
                 response.status = 200;
                 return response;
             } else {
