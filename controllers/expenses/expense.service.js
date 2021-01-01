@@ -132,8 +132,9 @@ async function getAll(req) {
             var sql = db.fetchAllWithJoinQry(fields, tableName, joins, WhereClouse, offset, limit, '  order by  Expense_SS__c.createddate desc '); //
            
             console.log(`INFO::: Get expense = ${sql}`);
-            var sql2 = "SELECT * FROM salesfore.Expense_SS_c";
+            var sql2 = "SELECT * FROM salesforce.Expense_SS_c";
             var expenses = await client.query(sql2);
+            
             // var expenses = await client.query(sql);
             console.log('client',expenses);
             if (expenses.rowCount != undefined && expenses.rowCount > 0) {
