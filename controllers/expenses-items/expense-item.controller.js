@@ -6,19 +6,14 @@ const expenseService = require('./expense-item.service');
 // routes
 
 router.get('/getAll', getAll);
-router.post('/getAll', getAll);
-
 router.get('/getAllLocalExpenseItem', getAllLocalExpense);
 router.get('/getAllOutstationExpenseItem', getAllOutstationExpense);
-
 router.post('/updateExpense', updateExpense);
 router.post('/addRemark', addRemark);
-
 router.post('/addExpenseItem', addExpenseItem);
 router.post('/addExpenseItemNew', addExpenseItemNew);
 router.post('/updateExpenseItem', updateExpenseItem);
 router.post('/delete', deleteExpenseItem);
-
 router.post('/updateStatus', updateStatus);
 router.post('/moveToLocalExpense', moveToLocalExpense);
 router.post('/moveToOutstationExpense', moveToOutstationExpense);

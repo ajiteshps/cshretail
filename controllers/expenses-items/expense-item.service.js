@@ -284,7 +284,9 @@ async function getAll(req) {
             }
             console.log('fields  >>> ', fields);
             var sql = db.fetchAllWithJoinQry(fields, tableName, joins, WhereClouse, offset, limit, orderBy);
-
+            var sql2 = 'SELECT * FROM  salesforce.Expense_Item_SS_c';
+            var totaldata = await client.query(sql2);
+            console.log('TOTAL EXPENSE',totaldata);
             console.log(`INFO::: Get expense = ${sql}`);
 
             var expenses = await client.query(sql);
@@ -292,7 +294,7 @@ async function getAll(req) {
             console.log('expenses.rowCount ===  ', expenses.rowCount);
             console.log('====================================')
             if (expenses.rowCount != undefined && expenses.rowCount > 0) {
-                response.response = { 'success': true, "data": { "expenses": expenses.rows } };
+                response.response = { 'success': true, "data": { "expenses": totaldata.rows } };
                 response.status = 200;
                 return response;
             } else {
