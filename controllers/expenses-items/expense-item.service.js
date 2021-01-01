@@ -287,9 +287,11 @@ async function getAll(req) {
             var sql2 = 'SELECT * FROM  salesforce.Expense_Item_SS_c';
             var totaldata = await client.query(sql2);
             console.log('TOTAL EXPENSE',totaldata);
+
             console.log(`INFO::: Get expense = ${sql}`);
 
-            var expenses = await client.query(sql);
+            var expenses = await client.query(sql2);
+            
             console.log('====================================')
             console.log('expenses.rowCount ===  ', expenses.rowCount);
             console.log('====================================')
