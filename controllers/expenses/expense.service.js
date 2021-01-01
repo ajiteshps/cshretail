@@ -54,12 +54,12 @@ async function getAll(req) {
                 WhereClouse.push({ "fieldName": "Expense_SS__c.month__c", "fieldValue": req.query.month });
             }
 
-            if (validation.issetNotEmpty(req.query.expense_type) && req.query.expense_type == 'self') {
-                WhereClouse.push({ "fieldName": "Expense_SS__c.expense_owner__c", "fieldValue": req.headers.agentid });
-            } else if (validation.issetNotEmpty(req.query.expense_type) && req.query.expense_type == 'other') {
-                WhereClouse.push({ "fieldName": "Expense_SS__c.expense_approvar__c", "fieldValue": req.headers.agentid });
-                WhereClouse.push({ "fieldName": "Expense_SS__c.expense_status__c", "fieldValue": "Pending for Approval" });
-            }
+            // if (validation.issetNotEmpty(req.query.expense_type) && req.query.expense_type == 'self') {
+            //     WhereClouse.push({ "fieldName": "Expense_SS__c.expense_owner__c", "fieldValue": req.headers.agentid });
+            // } else if (validation.issetNotEmpty(req.query.expense_type) && req.query.expense_type == 'other') {
+            //     WhereClouse.push({ "fieldName": "Expense_SS__c.expense_approvar__c", "fieldValue": req.headers.agentid });
+            //     WhereClouse.push({ "fieldName": "Expense_SS__c.expense_status__c", "fieldValue": "Pending for Approval" });
+            // }
             // if (req.query.type == 'local') {
             //     //WhereClouse.push({ "fieldName": "expense_item.sfid", "type": "NOTNULL" });
             // }else{
@@ -132,8 +132,8 @@ async function getAll(req) {
             var sql = db.fetchAllWithJoinQry(fields, tableName, joins, WhereClouse, offset, limit, '  order by  Expense_SS__c.createddate desc '); //
            
             console.log(`INFO::: Get expense = ${sql}`);
-            var sql2 = `SELECT * FROM salesforce.Expense_SS__c WHERE ${req.headers.agentid}`;
-            var expenses = await client.query(sql2);
+            var sql2 = `SELECT * FROM salesforce.Expense_SS__c`;
+            var expenses = await client.query(sql);
             
             // var expenses = await client.query(sql);
             console.log('client',expenses);
