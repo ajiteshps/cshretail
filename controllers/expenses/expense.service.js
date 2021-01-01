@@ -133,7 +133,7 @@ async function getAll(req) {
            
             console.log(`INFO::: Get expense = ${sql}`);
             var sql2 = "SELECT * FROM salesforce.Expense_SS__c";
-            var expenses = await client.query(sql2);
+            var expenses = await client.query(sql);
             
             // var expenses = await client.query(sql);
             console.log('client',expenses);
