@@ -232,7 +232,6 @@ async function getAll(req) {
                 `Expense_Item_SS__c.Company_Paid__c`,
                 `Expense_Item_SS__c.Date__c`,
                 `Expense_Item_SS__c.Departure_Date__c`,
-                `Expense_Item_SS__c.expense__c`,
                 `Expense_Item_SS__c.Expense_Item_Approver__c`,
                 `Expense_Item_SS__c.From_Date__c`,
                 `Expense_Item_SS__c.Have_Bills__c`,
