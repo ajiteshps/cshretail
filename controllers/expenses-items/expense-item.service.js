@@ -67,12 +67,7 @@ async function taggedVisit(visitIds,expense__c){
                         "p_table_field": `visits__c.retailer_dealer__c`,
                         "s_table_field": "account.sfid"
                     },
-                    {
-                        "type": "LEFT",
-                        "table_name": "Expense_SS__c",
-                        "p_table_field": `Expense_Item_SS__c.expense__c`,
-                        "s_table_field": "Expense_SS__c.sfid"
-                    },
+                    
                     
                 ];
                 var expItemsWhereClouse = [];
@@ -218,7 +213,6 @@ async function getAll(req) {
                 `Expense_Item_SS__c.toll_parking_charges__c`,
                 `Expense_Item_SS__c.name`,
                 `Expense_Item_SS__c.stay_type__c`,
-                
                 `Expense_Item_SS__c.Ticket_Number__c`,
                 `Expense_Item_SS__c.To_Date__c`,
                 `Expense_Item_SS__c.Toll_Parking_Charges__c`,
@@ -262,7 +256,6 @@ async function getAll(req) {
                     `Expense_Item_SS__c.toll_parking_charges__c`,
                     `Expense_Item_SS__c.amount__c`,
                     `Expense_Item_SS__c.exception__c`,
-                    `Expense_Item_SS__c.expense__c`,
                     `Expense_Item_SS__c.system_calculated_kilometer__c`,
                     `Expense_Item_SS__c.from__c`,
                     `Expense_Item_SS__c.to__c`,
@@ -360,7 +353,6 @@ async function getAllLocalExpense(req){
                 `Expense_Item_SS__c.toll_parking_charges__c`,
                 `Expense_Item_SS__c.amount__c`,
                 `Expense_Item_SS__c.exception__c`,
-                `Expense_Item_SS__c.expense__c`,
                 `Expense_Item_SS__c.system_calculated_kilometer__c`,
                 `Expense_Item_SS__c.from__c`,
                 `Expense_Item_SS__c.to__c`,                   
@@ -459,7 +451,6 @@ async function getAllOutstationExpense(req){
                 `Expense_Item_SS__c.toll_parking_charges__c`,
                 `Expense_Item_SS__c.amount__c`,
                 `Expense_Item_SS__c.exception__c`,
-                `Expense_Item_SS__c.expense__c`,
                 `Expense_Item_SS__c.system_calculated_kilometer__c`,
                 `Expense_Item_SS__c.from__c`,
                 `Expense_Item_SS__c.to__c`,                   
