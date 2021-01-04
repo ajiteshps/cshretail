@@ -115,9 +115,9 @@ async function getAll(req) {
             const WhereClouse = [];
             var offset = '0', limit = '1000';
             
-            if (validation.issetNotEmpty(req.query.id)) {
-                WhereClouse.push({ "fieldName": "expense___c", "fieldValue": req.query.id });
-            }
+            // if (validation.issetNotEmpty(req.query.id)) {
+            //     WhereClouse.push({ "fieldName": "expense__c", "fieldValue": req.query.id });
+            // }
             // if (validation.issetNotEmpty(req.body.visit_ids)) {
             //     var visitIds = req.body.visit_ids;
             //     WhereClouse.push({ "fieldName": "visits__c", "fieldValue": visitIds, "type":"IN" });
@@ -969,7 +969,7 @@ async function addExpenseItemNew(req) {
             var expenseItemDetail;
             var tableName = 'Expense_Item_SS__c';
 
-            var fieldsToBeInsert = `stay_type__c, amount__c, approved_by_head__c, approved_by_manager__c, arrival_date__c, bill_number__c, bills__c, city__c, company_paid__c, customer__c, date__c, departure_date__c , exception__c, expense__c, expense_item_approver__c, name, expense_status__c, expense_type__c, food__c, from__c, from_date__c, have_bills__c, kilometers_travelled__c, mode__c, month__c, number_of_nights__c, outstation_mode__c, outstation_type__c, pg_id__c, place__c, team__c, ticket_number__c, to__c, to_date__c, toll_parking_charges__c, type__c, visits__c, expense_pg_id__c`;
+            var fieldsToBeInsert = `stay_type__c, amount__c, approved_by_head__c, approved_by_manager__c, arrival_date__c, bill_number__c, bills__c, city__c, company_paid__c, customer__c, date__c, departure_date__c , exception__c, expense_item_approver__c, name, expense_status__c, expense_type__c, food__c, from__c, from_date__c, have_bills__c, kilometers_travelled__c, mode__c, month__c, number_of_nights__c, outstation_mode__c, outstation_type__c, pg_id__c, place__c, team__c, ticket_number__c, to__c, to_date__c, toll_parking_charges__c, type__c, visits__c, expense_pg_id__c`;
 
             console.log('expenseItemsBody >>>  ',expenseItemsBody);
 
@@ -1085,9 +1085,9 @@ async function addExpenseItemNew(req) {
                     if (validation.issetNotEmpty(expenseItemsBody[i].exception__c)) {
                         fieldValue.push({ "field": "exception__c", "value": expenseItemsBody[i].exception__c });
                     }
-                    if (validation.issetNotEmpty(expenseItemsBody[i].expense__c)) {
-                        fieldValue.push({ "field": "expense__c", "value": expenseItemsBody[i].expense__c });
-                    }
+                    // if (validation.issetNotEmpty(expenseItemsBody[i].expense__c)) {
+                    //     fieldValue.push({ "field": "expense__c", "value": expenseItemsBody[i].expense__c });
+                    // }
                     if (validation.issetNotEmpty(expenseItemsBody[i].expense_item_approver__c)) {
                         fieldValue.push({ "field": "expense_item_approver__c", "value": expenseItemsBody[i].expense_item_approver__c });
                     }
