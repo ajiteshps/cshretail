@@ -150,8 +150,6 @@ async function getAll(req) {
                     var tableNameExpItm = 'Expense_Item_SS__c',
                     fieldValueExpItm = [];
                     fieldValueExpItm.push({ "field": "expense__c", "value": req.query.id});
-
-                    
                     var WhereClouseExpItm = [];
                     WhereClouseExpItm.push({ "field": "Expense_Item_SS__c.tour__c", "value": tour_ids , "type":"IN"});
                     WhereClouseExpItm.push({ "field": "Expense_Item_SS__c.expense_type__c", "value": "Outstation Expense" });
@@ -287,16 +285,13 @@ async function getAll(req) {
             var sql2 = 'SELECT * FROM  salesforce.Expense_Item_SS__c';
             var totaldata = await client.query(sql2);
             console.log('TOTAL EXPENSE',totaldata);
-
             console.log(`INFO::: Get expense = ${sql}`);
-
-            var expenses = await client.query(sql2);
-            
+            var expenses = await client.query(sql);
             console.log('====================================')
             console.log('expenses.rowCount ===  ', expenses.rowCount);
             console.log('====================================')
             if (expenses.rowCount != undefined && expenses.rowCount > 0) {
-                response.response = { 'success': true, "data": { "expenses": totaldata.rows } };
+                response.response = { 'success': true, "data": { "expenses": expenses.rows } };
                 response.status = 200;
                 return response;
             } else {
