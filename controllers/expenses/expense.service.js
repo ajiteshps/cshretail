@@ -36,7 +36,6 @@ async function getAll(req) {
         // is_Validate = is_Validate ? (validation.issetNotEmpty(req.query.visitid) || validation.issetNotEmpty(req.query.month)) : false;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.query.month) : false;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.query.type) : false;
-
         expense_type = 'other-self';
         is_Validate = is_Validate ? (validation.issetNotEmpty(req.query.expense_type) && expense_type.indexOf(req.query.expense_type) > -1) : false;
 
