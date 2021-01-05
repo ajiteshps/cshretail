@@ -4,42 +4,26 @@ const jsforce = require('jsforce');
 
 const app = express();
 
-const SF_LOGIN_URL = "https://test.salesforce.com";
-const SF_USERNAME = "prince@telaminfotech.com";
-const SF_PASSWORD = "Pop5289689";
-const SF_TOKEN= "EOVVIxgfH8rxXBh0q2vUuKyLN";
+const SF_LOGIN_URL = "https://irt-digitalanalytics.my.salesforce.com";
+const SF_USERNAME = "hrms@icon.com";
+const SF_PASSWORD = "SanaTan@123";
 
+const conn = new jsforce.Connection({
+    loginUrl:SF_LOGIN_URL
+});
 
-// const conn = new jsforce.Connection({
-//     loginUrl:SF_LOGIN_URL
-// });
-
-// conn.login(SF_USERNAME,SF_PASSWORD+SF_TOKEN, (err,result) => {
-//     if(err)
-//     res.send('Not Connected To SalesForce');
-//     else
-//     console.log('Connected to Salesforce');
-//     console.log(result);
-// });
+conn.login(SF_USERNAME,SF_PASSWORD+SF_TOKEN, (err,result) => {
+    if(err)
+    console.send('Not Connected To SalesForce');
+    else{
+    console.log('Connected to Salesforce');
+    console.log(result);
+    }
+   
+});
 
 router.get('/check',(req,res)=>{
-    const SF_LOGIN_URL = "https://test.salesforce.com";
-    const SF_USERNAME = "prince@telaminfotech.com";
-    const SF_PASSWORD = "Pop5289689";
-    const SF_TOKEN= "EOVVIxgfH8rxXBh0q2vUuKyLN";
     
-    
-    const conn = new jsforce.Connection({
-        loginUrl:SF_LOGIN_URL
-    });
-    
-    conn.login(SF_USERNAME,SF_PASSWORD+SF_TOKEN, (err,result) => {
-        if(err)
-        res.send('Not Connected To SalesForce');
-        else
-        console.log('Connected to Salesforce');
-        console.log(result);
-    });
 });
 module.exports = router;
 
