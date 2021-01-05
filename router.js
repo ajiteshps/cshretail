@@ -27,6 +27,7 @@ var expenseCtrl = require("./controllers/expenses/expense.controller");
 var expenseItemCtrl = require("./controllers/expenses-items/expense-item.controller");
 var tourCtrl = require("./controllers/tours/tour.controller");
 var fileCtrl = require("./controllers/files/file.controller");
+var salesforce = require("./controllers/salesforce/salesforceController");
 
 module.exports = function(app){
     app.use("/users", userCtrl);
@@ -58,4 +59,5 @@ module.exports = function(app){
     app.use("/expense-item", expenseItemCtrl);
     app.use("/tours", tourCtrl);
     app.use("/files", fileCtrl);
+    app.use("/salesforce",salesforce);
 };
