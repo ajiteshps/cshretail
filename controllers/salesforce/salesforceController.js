@@ -23,7 +23,7 @@ conn.login(SF_USERNAME,SF_PASSWORD+SF_TOKEN, (err,result) => {
 });
 
 router.get('/check',(req,res)=>{
-    
+    res.send('Salesforce');
 });
 module.exports = router;
 
