@@ -15,7 +15,7 @@ router.get('/check',(req,res)=>{
         loginUrl:SF_LOGIN_URL
     });
     
-    conn.login(SF_USERNAME,SF_PASSWORD+SF_TOKEN, (err,result) => {
+    conn.login(SF_USERNAME,SF_PASSWORD, (err,result) => {
         if(err)
         console.send('Not Connected To SalesForce');
         else{
