@@ -124,7 +124,6 @@ async function getAll(req) {
             //     if(validation.issetNotEmpty(req.query.id)){
             //         taggedVisit(visitIds,req.query.id);
             //     }
-
             // }
             if (validation.issetNotEmpty(req.query.id) && validation.issetNotEmpty(req.headers.type) && req.headers.type=='local') {
                 console.log('-----------');
@@ -237,10 +236,8 @@ async function getAll(req) {
                 `Expense_Item_SS__c.pg_id__c`,
                 `Expense_Item_SS__c.exception__c`,
                 `Expense_Item_SS__c.system_calculated_kilometer__c`,
-
                 `date_part('epoch'::text, Expense_Item_SS__c.date__c) * (1000)::double precision as date__c`,
                 `date_part('epoch'::text, Expense_Item_SS__c.createddate) * (1000)::double precision as createddate`,
-                
             ];
             var orderBy = ' order by Expense_Item_SS__c.createddate asc';
             if (validation.issetNotEmpty(req.query.type) && req.query.type == 'local') {
@@ -278,6 +275,7 @@ async function getAll(req) {
             // var totaldata = await client.query(sql2);
             // console.log('TOTAL EXPENSE',totaldata);
             console.log(`INFO::: Get expense = ${sql}`);
+            
             var expenses = await client.query(sql);
             console.log('====================================')
             console.log('expenses.rowCount ===  ', expenses.rowCount);
