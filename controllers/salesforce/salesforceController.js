@@ -1,3 +1,4 @@
+const router = require('express').Router();
 const express = require('express');
 const jsforce = require('jsforce');
 
@@ -24,4 +25,5 @@ conn.login(SF_USERNAME,SF_PASSWORD+SF_TOKEN, (err,result) => {
 app.get('/',(req,res)=>{
     res.send('Salesforce');
 });
+module.exports = router;
 
