@@ -1,17 +1,27 @@
-var jsforce = require('jsforce');
-var conn = new jsforce.Connection({
+const express = require('express');
+const jsforce = require('jsforce');
 
-  loginUrl : 'https://test.salesforce.com'
+const app = express();
+
+const SF_LOGIN_URL = "https://test.salesforce.com";
+const SF_USERNAME = "prince@telaminfotech.com";
+const SF_PASSWORD = "Pop5289689";
+const SF_TOKEN= "EOVVIxgfH8rxXBh0q2vUuKyLN";
+
+
+const conn = new jsforce.Connection({
+    loginUrl:SF_LOGIN_URL
 });
 
-conn.login(username, password, function(err, userInfo) {
-  if (err) { return console.error(err); }
-  // Now you can get the access token and instance URL information.
-  // Save them to establish connection next time.
-  console.log(conn.accessToken);
-  console.log(conn.instanceUrl);
-  // logged in user property
-  console.log("User ID: " + userInfo.id);
-  console.log("Org ID: " + userInfo.organizationId);
-  // ...
+conn.login(SF_USERNAME,SF_PASSWORD+SF_TOKEN, (err,result) => {
+    if(err)
+    res.send('Not Connected To SalesForce');
+    else
+    console.log('Connected to Salesforce');
+    console.log(result);
 });
+
+app.get('/',(req,res)=>{
+    res.send('Salesforce');
+});
+
