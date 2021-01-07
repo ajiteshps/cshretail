@@ -26,15 +26,17 @@ router.post('/api/ExpensePDF/',async(req,res,err)=>{
     var data = await conn.apex.post(body);
         if(err) {
             console.log(err,'API ERROR');
+            res.send({
+                status:false
+            });
         }
-        else
+        else{
         console.log(data,'Data from API');
         res.send({
             status:200,
             data:data
         });
-
-    
+    }
 });
 
    
