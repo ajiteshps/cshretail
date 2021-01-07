@@ -24,11 +24,11 @@ router.post('/api/ExpensePDF/',async(req,res)=>
  
     var body = { teamId: req.body.teamId, month : req.body.month };
      var  data = await conn.apex.post(body, (err,response) => {
-        if (err) {
-            res.json({ 'success': false,'error': err});
+        if (response) {
+            res.json({ 'success': true,'data': data});
         }
         else
-        res.json({ 'success': true, 'message': "Data Send",'data': data});
+        res.json({ 'success': false, 'error': err});
     });
         
     
