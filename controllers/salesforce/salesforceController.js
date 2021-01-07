@@ -29,8 +29,10 @@ router.post('/api/ExpensePDF/',async(req,res,err)=>{
         }
         else
         console.log(data,'Data from API');
-        console.log(res,'RESULT FROM API');
-        console.log(res.json());
+        res.send({
+            status:200,
+            data:data
+        });
 
     
 });
