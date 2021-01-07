@@ -14,9 +14,8 @@ const SF_PASSWORD = "SanaTan@123";
     conn.login(SF_USERNAME,SF_PASSWORD, (err,result) => {
         if(err)
         console.send('Not Connected To SalesForce');
-        else{
+        else
         console.log('Connected to Salesforce');
-        }
         });
 
 
@@ -26,16 +25,11 @@ router.post('/api/ExpensePDF/',async(req,res,err)=>{
     var data = await conn.apex.post(body);
         if(err) {
             console.log(err,'API ERROR');
-            return res.json({
-                status:false
-            });
+            res.json({ 'success': false });
         }
         else{
         console.log(data,'Data from API');
-        return res.json({
-            status:200,
-            data:data
-        });
+        res.json({ 'success': true, 'message': "Data Send" });
     }
 });
 
