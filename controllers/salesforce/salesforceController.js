@@ -23,7 +23,7 @@ router.post('/api/ExpensePDF/',async(req,res,err)=>
 {
     try{
     var body = { teamId: req.body.teamId, month : req.body.month };
-    var data = await conn.apex.post(body);
+    var data = await conn.apex(body);
         if(err) {
             console.log(err,'API ERROR');
             res.json({ 'success': false });
@@ -31,11 +31,11 @@ router.post('/api/ExpensePDF/',async(req,res,err)=>
         else{
         console.log(data,'Data from API');
         res.json({ 'success': true, 'message': "Data Send" });
+            }
+        }
+    catch(err) {
+        console.log(err);
     }
-}
-catch(err) {
-    console.log(err);
-}
 });
 
    
