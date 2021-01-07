@@ -20,10 +20,10 @@ const SF_PASSWORD = "SanaTan@123";
         });
 
 
-router.post('/check',async(req,res)=>{
+router.post('/api/ExpensePDF/',async(req,res)=>{
    
     var body = { teamId: req.body.teamId, month : 'Jan' };
-    var data = await conn.apex.post("/api/ExpensePDF/", body, function(err,response) {
+    var data = await conn.apex.post(body, function(err,response) {
         if(err) {
             console.log(err,'API ERROR');
         }
