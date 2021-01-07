@@ -19,7 +19,7 @@ const SF_PASSWORD = "SanaTan@123";
         });
 
 
-router.post('/api/ExpensePDF/',async(req,res,err)=>
+router.post('/api/ExpensePDF/',async(req,res)=>
 {
     try{
         console.log(req.body,'data form frontend');
@@ -34,8 +34,8 @@ router.post('/api/ExpensePDF/',async(req,res,err)=>
 
        
         }
-    catch(err) {
-        console.log(err);
+    catch(error) {
+        console.log(error);
     }
 });
 
