@@ -22,24 +22,17 @@ const SF_PASSWORD = "SanaTan@123";
 router.post('/api/ExpensePDF/',async(req,res,err)=>
 {
     try{
+        console.log(req.body,'data form frontend');
     var body = { teamId: req.body.teamId, month : req.body.month };
      await conn.apex.post(body,(err,data2) =>{
         if (err) {
             res.json({ 'success': false,'error': err});
         }
-
+        else
         res.json({ 'success': true, 'message': "Data Send",'data': data2});
     });
 
-        // console.log(data,'APEX');
-        // if(err) {
-        //     console.log(err,'API ERROR');
-        //     res.json({ 'success': false });
-        // }
-        // else{
-        // console.log(data,'Data from API');
-        // res.json({ 'success': true, 'message': "Data Send" });
-        //     }
+       
         }
     catch(err) {
         console.log(err);
