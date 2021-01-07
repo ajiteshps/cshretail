@@ -29,7 +29,6 @@ router.post('/api/ExpensePDF/',async(req,res)=>{
         }
         else
         console.log(data,'Data from API');
-        console.log(response.data);
     });
     
 });
