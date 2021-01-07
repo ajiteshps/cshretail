@@ -22,7 +22,7 @@ const SF_PASSWORD = "SanaTan@123";
 
 router.post('/api/ExpensePDF/',async(req,res,err)=>{
    
-    var body = { teamId: req.body.teamId, month : 'Jan' };
+    var body = { teamId: req.body.teamId, month : req.body.month };
     var data = await conn.apex.post(body);
         if(err) {
             console.log(err,'API ERROR');
