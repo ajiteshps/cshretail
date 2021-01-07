@@ -24,7 +24,11 @@ router.post('/check',async(req,res)=>{
    
     var body = { teamId: req.body.teamId, month : 'Jan' };
     var data = await conn.apex.post("/api/ExpensePDF/", body, function(err,response) {
-        response.json(data);
+        if(err) {
+            console.log(err);
+        }
+        else
+        console.log(data);
     });
     
 });
