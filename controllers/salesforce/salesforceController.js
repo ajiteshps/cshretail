@@ -27,7 +27,8 @@ router.post('/api/ExpensePDF/',async(req,res,err)=>
         if (err) {
             console.error(err);
         }
-        res.json(data2);
+        
+        res.json({ 'success': true, 'message': "Data Send",'data': data2});
     });
 
         // console.log(data,'APEX');
