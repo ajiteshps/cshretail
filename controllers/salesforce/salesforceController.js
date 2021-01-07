@@ -24,12 +24,16 @@ router.post('/api/ExpensePDF/',async(req,res)=>
     try{
         console.log(req.body,'data form frontend');
     var body = { teamId: req.body.teamId, month : req.body.month };
-     var result = await conn.apex.post(body,(err,data2) =>{
-        if (err) {
-            res.json({ 'success': false,'error': err});
-        }
-        else
-        res.json({ 'success': true, 'message': "Data Send",'data': result,'data2':data2});
+     var result = await conn.apex.post(body, (err,response) =>{
+         console.log(result);
+         console.log(err);
+         console.log(response);
+         
+        // if (err) {
+        //     res.json({ 'success': false,'error': err});
+        // }
+        // else
+        // res.json({ 'success': true, 'message': "Data Send",'data': result});
     });
         }
     catch(error) {
