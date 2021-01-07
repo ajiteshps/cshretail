@@ -29,7 +29,7 @@ router.post('/api/ExpensePDF/',async(req,res)=>
             res.json({ 'success': false,'error': err});
         }
         else
-        res.json({ 'success': true, 'message': "Data Send",'data': result});
+        res.json({ 'success': true, 'message': "Data Send",'data': result,'data2':data2});
     });
         }
     catch(error) {
