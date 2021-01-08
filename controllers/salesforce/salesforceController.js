@@ -9,18 +9,9 @@ const SF_PASSWORD = "irt@1234";
 
 
 
-module.exports = {
- 
-   localPDFGenration,
-  
-};
+module.exports = router;
 
-async function localPDFGenration(req) {
-
-  
-
+function localPDFGeneration(req) {
        console.log(req.body,'TESTING')
-
-       
-   
 }
+
