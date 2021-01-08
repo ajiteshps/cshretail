@@ -27,7 +27,7 @@ function localPDFGeneration(req,res,next) {
         //     }
          var body = { teamId: req.body.teamId, month : req.body.month };
 
-         conn.apex.post("/api/ExpensePDF/",body)
+         connection.apex.post("/api/ExpensePDF/",body)
          .then(response => res.status(response.status).json({
              status:true,
              message:response.message
