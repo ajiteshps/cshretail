@@ -46,8 +46,8 @@ const SF_PASSWORD = "irt@1234";
 router.post('/localPDFGeneration',localPDFGeneration);
 
 
-function localPDFGeneration(req, res, next) {
-    const conn = new jsforce.Connection({
+async function localPDFGeneration(req, res, next) {
+    const conn =  new jsforce.Connection({
         loginUrl:SF_LOGIN_URL
     });
     await conn.login(SF_USERNAME,SF_PASSWORD);
