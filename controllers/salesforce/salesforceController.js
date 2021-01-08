@@ -1,8 +1,6 @@
-const router = require('express').Router();
 const express = require('express');
+const router = express.Router();
 const jsforce = require('jsforce');
-
-const app = express();
 
 const SF_LOGIN_URL = "https://cse--herokusand.my.salesforce.com";
 const SF_USERNAME = "shashwat@cloud-icon.com.irtsandcsh.HerokuSand";
@@ -41,6 +39,9 @@ const SF_PASSWORD = "irt@1234";
 //     await conn.login(SF_USERNAME,SF_PASSWORD);
 //     console.log(conn);
 //   };
+
+
+
 
 router.post('/localPDF', async (req,res) => {
     const conn =  new jsforce.Connection({
