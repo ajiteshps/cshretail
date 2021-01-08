@@ -19,17 +19,22 @@ function localPDFGeneration(req) {
          });
        var connection  =  conn.login(SF_USERNAME,SF_PASSWORD);
          if(connection){
-         console.log('Connected');
+            res.json({status:true,'data':'Connected'});
+            }
+            else{
+            res.json({status:true,'data':'Connected'});
+            }
          var body = { teamId: req.body.teamId, month : req.body.month };
          conn.apex.post( body, function(err, res) {
             if(err)
             console.log(err,'Error in Api');
-            else
+            else{
             console.log(res,'Response');
+            }
         });
+        
          }
-         else
-         console.log('Error');
+       
 
-}
+
 
