@@ -12,14 +12,20 @@ const SF_PASSWORD = "irt@1234";
 module.exports = router;
 
 function localPDFGeneration(req) {
-   
+    console.log(req.body);
        console.log('Hiting Api');
        const conn =  new jsforce.Connection({
            loginUrl:SF_LOGIN_URL
          });
        var connection  =  conn.login(SF_USERNAME,SF_PASSWORD);
-         if(connection)
+         if(connection){
          console.log('Connected');
+
+         var body = { teamId: req.body.teamId, month : req.body.month };
+        var result = conn.apex.post("/api/ExpensePDF/", body, function(err, res) {
+            console.log(result);
+        });
+         }
          else
          console.log('Error');
 
