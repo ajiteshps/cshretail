@@ -12,6 +12,13 @@ const SF_PASSWORD = "irt@1234";
 module.exports = router;
 
 function localPDFGeneration(req) {
-       console.log(req.body,'TESTING')
+   
+       console.log('Hiting Api');
+       const conn =  new jsforce.Connection({
+           loginUrl:SF_LOGIN_URL
+       });
+        conn.login(SF_USERNAME,SF_PASSWORD);
+       console.log(conn,'connection');
+
 }
 
