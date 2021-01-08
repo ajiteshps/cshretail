@@ -4,7 +4,7 @@ const jsforce = require('jsforce');
 
 const app = express();
 
-const SF_LOGIN_URL = "https://test.salesforce.com";
+const SF_LOGIN_URL = "https://cse--herokusand.my.salesforce.com";
 const SF_USERNAME = "shashwat@cloud-icon.com.irtsandcsh.HerokuSand";
 const SF_PASSWORD = "irt@1234";
 
@@ -47,6 +47,7 @@ router.post('/localPDFGeneration',localPDFGeneration);
 
 
 async function localPDFGeneration(req, res, next) {
+    console.log('Hiting Api');
     const conn =  new jsforce.Connection({
         loginUrl:SF_LOGIN_URL
     });
