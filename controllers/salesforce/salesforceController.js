@@ -17,15 +17,10 @@ module.exports = {
 
 async function localPDFGenration(req) {
 
-    try {
+  
 
        console.log(req.body,'TESTING')
 
        
-    } catch (e) {
-        console.log(e);
-        response.status = 500;
-        response.response = { "success": false, "message": "Internal server missing." };
-        return response;
-    }
+   
 }
