@@ -27,15 +27,16 @@ function localPDFGeneration(req,res,next) {
             }
          var body = { teamId: req.body.teamId, month : req.body.month };
 
-         conn.apex.post("/api/ExpensePDF/",body).then(response => console.log(response,'RESPONSE')).catch(err => console.log(err,'ERROR')) ;
-        //  console.log(result,'DATA FROM SALESFORCE');
-        //  {
-        //     if(err)
-        //     console.log(err,'Error in Api');
-        //     else{
-        //     console.log(response,'Response');
-        //     }
-        // };
+         conn.apex.post("/api/ExpensePDF/",body)
+         .then(response => res.status(response.status).json({
+             status:true,
+             message:response.message
+         }))
+         .catch(err => res.status(response.status).json({
+            status:false,
+            message:err.message
+        })) ;
+            
         
          }
        
