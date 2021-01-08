@@ -13,7 +13,7 @@ const SF_PASSWORD = "irt@1234";
 
     conn.login(SF_USERNAME,SF_PASSWORD, (err,result) => {
         if(err)
-        console.log('Not Connected To SalesForce');
+        console.log('Not Connected To SalesForce',err);
         else
         console.log('Connected to Salesforce');
         });
