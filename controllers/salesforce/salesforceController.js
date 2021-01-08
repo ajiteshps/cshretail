@@ -19,12 +19,12 @@ function localPDFGeneration(req,res,next) {
          });
        var connection  =  conn.login(SF_USERNAME,SF_PASSWORD);
          console.log(conn,'Connection');
-         if(connection){
-            res.json({status:true,'message':'Connected to Salesforce'});
-            }
-            else{
-            res.json({status:false,'message':'Not Connected'});
-            }
+        //  if(connection){
+        //     res.json({status:true,'message':'Connected to Salesforce'});
+        //     }
+        //     else{
+        //     res.json({status:false,'message':'Not Connected'});
+        //     }
          var body = { teamId: req.body.teamId, month : req.body.month };
 
          conn.apex.post("/api/ExpensePDF/",body)
