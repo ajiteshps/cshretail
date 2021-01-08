@@ -51,7 +51,7 @@ async function localPDFGeneration(req, res, next) {
         loginUrl:SF_LOGIN_URL
     });
     await conn.login(SF_USERNAME,SF_PASSWORD);
-    console.log(conn);
+    console.log(conn,'connection');
   };
 
 
