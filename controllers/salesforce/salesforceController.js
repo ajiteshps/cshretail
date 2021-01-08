@@ -4,9 +4,9 @@ const jsforce = require('jsforce');
 
 const app = express();
 
-const SF_LOGIN_URL = "https://irt-digitalanalytics.my.salesforce.com";
-const SF_USERNAME = "hrms@icon.com";
-const SF_PASSWORD = "SanaTan@123";
+const SF_LOGIN_URL = "https://test.salesforce.com";
+const SF_USERNAME = "shashwat@cloud-icon.com.irtsandcsh.HerokuSand";
+const SF_PASSWORD = "irt@1234";
  const conn = new jsforce.Connection({
         loginUrl:SF_LOGIN_URL
     });
