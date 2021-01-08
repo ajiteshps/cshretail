@@ -29,6 +29,7 @@ var tourCtrl = require("./controllers/tours/tour.controller");
 var fileCtrl = require("./controllers/files/file.controller");
 var salesforce = require("./controllers/salesforce/salesforceController");
 
+
 module.exports = function(app){
     app.use("/users", userCtrl);
     app.use("/agents", agentCtrl);
@@ -59,5 +60,5 @@ module.exports = function(app){
     app.use("/expense-item", expenseItemCtrl);
     app.use("/tours", tourCtrl);
     app.use("/files", fileCtrl);
-    app.use("/salesforce",salesforce);
+    app.use("/salesforce",salesforce.localPDFGeneration);
 };
