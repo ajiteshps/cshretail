@@ -6,9 +6,7 @@ const salesforceService  = require('./salesforce.Service');
 router.post('/localPDFGeneration',localPDFGeneration);
 router.post('/OutStationPDFGeneration',OutStationPDFGeneration);
 
-const SF_LOGIN_URL = "https://cse--herokusand.my.salesforce.com";
-const SF_USERNAME = "shashwat@cloud-icon.com.irtsandcsh.HerokuSand";
-const SF_PASSWORD = "irt@1234";
+
 
 
 
