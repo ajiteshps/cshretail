@@ -11,18 +11,19 @@ const SF_PASSWORD = "irt@1234";
 
 module.exports = router;
 
-function localPDFGeneration(req) {
+function localPDFGeneration(req,res,next) {
     console.log(req.body);
        console.log('Hiting Api');
        const conn =  new jsforce.Connection({
            loginUrl:SF_LOGIN_URL
          });
        var connection  =  conn.login(SF_USERNAME,SF_PASSWORD);
+
          if(connection){
             res.json({status:true,'data':'Connected'});
             }
             else{
-            res.json({status:true,'data':'Connected'});
+            res.json({status:false,'data':'Not Connected'});
             }
          var body = { teamId: req.body.teamId, month : req.body.month };
          conn.apex.post( body, function(err, res) {
