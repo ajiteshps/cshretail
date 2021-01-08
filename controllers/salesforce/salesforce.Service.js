@@ -1,7 +1,7 @@
 const jsforce = require('jsforce');
 const SF_LOGIN_URL = "https://cse--herokusand.my.salesforce.com/";
 const SF_USERNAME = "shashwat@cloud-icon.com.irtsandcsh.herokusand";
-const SF_PASSWORD = "irt@1234";
+const SF_PASSWORD = "ITC@1234";
 module.exports = {
     connection
 }
