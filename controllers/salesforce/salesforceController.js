@@ -42,7 +42,6 @@ const app = express();
 
 
 
-
 app.post('/localPDF', async (req,res) => {
     const conn =  new jsforce.Connection({
         loginUrl:SF_LOGIN_URL
@@ -67,3 +66,4 @@ app.post('/localPDF', async (req,res) => {
 
 
 
+module.exports = app;
