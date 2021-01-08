@@ -1,12 +1,12 @@
 const express = require('express');
-const router = express.Router();
+
 const jsforce = require('jsforce');
 
 const SF_LOGIN_URL = "https://cse--herokusand.my.salesforce.com";
 const SF_USERNAME = "shashwat@cloud-icon.com.irtsandcsh.HerokuSand";
 const SF_PASSWORD = "irt@1234";
 
-
+const app = express();
     // conn.login(SF_USERNAME,SF_PASSWORD, (err,result) => {
     //     if(err)
     //     console.log('Not Connected To SalesForce',err);
@@ -43,7 +43,7 @@ const SF_PASSWORD = "irt@1234";
 
 
 
-router.post('/localPDF', async (req,res) => {
+app.post('/localPDF', async (req,res) => {
     const conn =  new jsforce.Connection({
         loginUrl:SF_LOGIN_URL
     });
@@ -65,5 +65,5 @@ router.post('/localPDF', async (req,res) => {
 //   };
 
 
-module.exports = router;
+
 
