@@ -16,9 +16,12 @@ function localPDFGeneration(req) {
        console.log('Hiting Api');
        const conn =  new jsforce.Connection({
            loginUrl:SF_LOGIN_URL
-       });
-        conn.login(SF_USERNAME,SF_PASSWORD);
-       console.log(conn,'connection');
+         });
+       var connection  =  conn.login(SF_USERNAME,SF_PASSWORD);
+         if(connection)
+         console.log('Connected');
+         else
+         console.log('Error');
 
 }
 
