@@ -60,5 +60,5 @@ module.exports = function(app){
     app.use("/expense-item", expenseItemCtrl);
     app.use("/tours", tourCtrl);
     app.use("/files", fileCtrl);
-    app.use("/salesforce",salesforce.localPDFGeneration);
+    app.use("/salesforce",salesforce);
 };

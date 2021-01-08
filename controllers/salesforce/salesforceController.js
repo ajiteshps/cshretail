@@ -34,7 +34,19 @@ const SF_PASSWORD = "irt@1234";
     
 // });
 
-exports.localPDFGeneration = async (req, res, next) => {
+// exports.localPDFGeneration = async (req, res, next) => {
+//     const conn = new jsforce.Connection({
+//         loginUrl:SF_LOGIN_URL
+//     });
+//     await conn.login(SF_USERNAME,SF_PASSWORD);
+//     console.log(conn);
+//   };
+
+   
+router.post('/localPDFGeneration',localPDFGeneration);
+
+
+function localPDFGeneration(req, res, next) {
     const conn = new jsforce.Connection({
         loginUrl:SF_LOGIN_URL
     });
@@ -42,10 +54,6 @@ exports.localPDFGeneration = async (req, res, next) => {
     console.log(conn);
   };
 
-   
 
-
-
-
-// module.exports = router;
+ module.exports = router;
 
