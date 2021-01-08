@@ -22,8 +22,11 @@ function localPDFGeneration(req) {
          console.log('Connected');
 
          var body = { teamId: req.body.teamId, month : req.body.month };
-        var result = conn.apex.post("/api/ExpensePDF/", body, function(err, res) {
-            console.log(result);
+         conn.apex.post( body, function(err, res) {
+            if(err)
+            console.log(err);
+            else
+            console.log(res);
         });
          }
          else
