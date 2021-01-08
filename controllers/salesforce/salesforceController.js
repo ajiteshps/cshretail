@@ -42,19 +42,27 @@ const SF_PASSWORD = "irt@1234";
 //     console.log(conn);
 //   };
 
-   
-router.post('/localPDFGeneration',localPDFGeneration);
-
-
-async function localPDFGeneration(req, res, next) {
-    console.log('Hiting Api');
+router.post('/localPDF', async (req,res) => {
     const conn =  new jsforce.Connection({
         loginUrl:SF_LOGIN_URL
     });
     await conn.login(SF_USERNAME,SF_PASSWORD);
     console.log(conn,'connection');
-  };
+});
+
+   
+// router.post('/localPDFGeneration',localPDFGeneration);
+
+// async function localPDFGeneration(req, res, next) {
+//     console.log('Hiting Api');
+//     const conn =  new jsforce.Connection({
+//         loginUrl:SF_LOGIN_URL
+//     });
+//     await conn.login(SF_USERNAME,SF_PASSWORD);
+//     console.log(conn,'connection');
+
+//   };
 
 
- module.exports = router;
+module.exports = router;
 
