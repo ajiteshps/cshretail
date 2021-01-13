@@ -53,14 +53,14 @@ async function getAll(req) {
                 WhereClouse.push({ "fieldName": "Expense_SS__c.month__c", "fieldValue": req.query.month });
             }
 
-            // if (validation.issetNotEmpty(req.query.expense_type) && req.query.expense_type == 'self') {
-            //     WhereClouse.push({ "fieldName": "Expense_SS__c.expense_owner__c", "fieldValue": req.headers.agentid });
-            // } else if (validation.issetNotEmpty(req.query.expense_type) && req.query.expense_type == 'other') {
-            //     WhereClouse.push({ "fieldName": "Expense_SS__c.expense_approvar__c", "fieldValue": req.headers.agentid });
-            //     WhereClouse.push({ "fieldName": "Expense_SS__c.expense_status__c", "fieldValue": "Pending for Approval" });
-            // }
+            if (validation.issetNotEmpty(req.query.expense_type) && req.query.expense_type == 'self') {
+                WhereClouse.push({ "fieldName": "Expense_SS__c.expense_owner__c", "fieldValue": req.headers.agentid });
+            } else if (validation.issetNotEmpty(req.query.expense_type) && req.query.expense_type == 'other') {
+                WhereClouse.push({ "fieldName": "Expense_SS__c.expense_approvar__c", "fieldValue": req.headers.agentid });
+                WhereClouse.push({ "fieldName": "Expense_SS__c.expense_status__c", "fieldValue": "Pending for Approval" });
+            }
             // if (req.query.type == 'local') {
-            //     //WhereClouse.push({ "fieldName": "expense_item.sfid", "type": "NOTNULL" });
+            //     WhereClouse.push({ "fieldName": "expense_item.sfid", "type": "NOTNULL" });
             // }else{
             // }
             WhereClouse.push({ "fieldName": "Expense_SS__c.sfid", "type": "NOTNULL" });
@@ -119,7 +119,6 @@ async function getAll(req) {
                 `member.branch__c as member_branch__c`,
                 `member.sfid as member_sfid`,
                 `member_branch.name as member_branch_name`,
-
                 `approvar.name as approvar_name`,
                 `approvar.team_member_name__c as approvar_team_member_name__c`,
                 `approvar.branch__c as approvar_branch__c`,
@@ -131,7 +130,7 @@ async function getAll(req) {
             var sql = db.fetchAllWithJoinQry(fields, tableName, joins, WhereClouse, offset, limit, '  order by  Expense_SS__c.createddate desc '); //
            
             console.log(`INFO::: Get expense = ${sql}`);
-            var sql2 = `SELECT * FROM salesforce.Expense_SS__c`;
+            // var sql2 = `SELECT * FROM salesforce.Expense_SS__c`;
             var expenses = await client.query(sql);
             
             // var expenses = await client.query(sql);
