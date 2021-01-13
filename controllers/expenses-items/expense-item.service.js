@@ -115,9 +115,9 @@ async function getAll(req) {
             const WhereClouse = [];
             var offset = '0', limit = '1000';
             
-            // if (validation.issetNotEmpty(req.query.id)) {
-            //     WhereClouse.push({ "fieldName": "expense__c", "fieldValue": req.query.id });
-            // }
+            if (validation.issetNotEmpty(req.query.id)) {
+                WhereClouse.push({ "fieldName": "expense__c", "fieldValue": req.query.id });
+            }
             // if (validation.issetNotEmpty(req.body.visit_ids)) {
             //     var visitIds = req.body.visit_ids;
             //     WhereClouse.push({ "fieldName": "visits__c", "fieldValue": visitIds, "type":"IN" });
