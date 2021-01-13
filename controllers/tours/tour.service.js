@@ -30,7 +30,7 @@ async function getAll(req) {
 
         is_Validate = true;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.headers.agentid) : false;
-        // is_Validate = is_Validate ? (validation.issetNotEmpty(req.query.visitid) || validation.issetNotEmpty(req.query.month)) : false;
+        is_Validate = is_Validate ? (validation.issetNotEmpty(req.query.visitid) || validation.issetNotEmpty(req.query.month)) : false;
 
         tour_type = 'other-self';
         is_Validate = is_Validate ? (validation.issetNotEmpty(req.query.tour_type) && tour_type.indexOf(req.query.tour_type) > -1) : false;
