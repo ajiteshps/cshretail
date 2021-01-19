@@ -543,7 +543,7 @@ async function updateExpense(req) {
                 }
 
                 //TODO
-                fieldValue.push({ "field": "city__c", "value": 'a0L1m000000Dqb2EAC' });
+                fieldValue.push({ "field": "city__c", "value": 'a052w000009pOslAAE' });
                 fieldValue.push({ "field": "amount__c", "value": req.body.amount__c });
 
                 const WhereClouse = [];
