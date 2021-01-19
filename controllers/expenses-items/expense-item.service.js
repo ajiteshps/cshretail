@@ -103,7 +103,9 @@ async function taggedVisit(visitIds,expense__c){
 
 async function getAll(req) {
     try {
-        console.log(req.body);
+        console.log(req.body,'EXPENSE ITEMS BODY');
+        console.log(req.query,'EXPENSE ITEMS QUERY');
+        console.log(req.headers,'EXPENSE ITEMS HEADERS');
         is_Validate = true;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.headers.agentid) : false;
         is_Validate = is_Validate ? (validation.issetNotEmpty(req.query.id) || validation.issetNotEmpty(req.body.visit_ids) ) : false;
