@@ -500,7 +500,10 @@ async function getAllOutstationExpense(req){
  * 
 *  */
 async function updateExpense(req) {
-
+    console.log(req.body,'UPDATE EXPENSE BODY');
+    console.log(req.header,'UPDATE EXPENSE HEADERS');
+    console.log(req.query,'UPDATE EXPENSE QUERY');
+    
     try {
         is_Validate = true;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.query.id) : false;
