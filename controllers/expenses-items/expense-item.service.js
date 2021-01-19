@@ -283,6 +283,8 @@ async function getAll(req) {
             console.log('expenses.rowCount ===  ', expenses.rowCount);
             console.log('====================================')
             console.log(expenses.rows,'EXPENSE API DATA RESPONSES');
+
+            
             if (expenses.rowCount != undefined && expenses.rowCount > 0) {
                 response.response = { 'success': true, "data": { "expenses": expenses.rows } };
                 response.status = 200;
