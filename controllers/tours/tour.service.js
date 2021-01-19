@@ -38,21 +38,21 @@ async function getAll(req) {
         if (is_Validate) {
 
             const tableName = 'Tour_SS__c';
-
+            
             const WhereClouse = [];
             var offset = '0', limit = '1000';
             
             if (validation.issetNotEmpty(req.query.tour_type) && req.query.tour_type == 'self') {
                 WhereClouse.push({ "fieldName": "tour_owner__c", "fieldValue": req.headers.agentid });
+                
             } else if (validation.issetNotEmpty(req.query.tour_type) && req.query.tour_type == 'other') {
                 WhereClouse.push({ "fieldName": "tour_approver__c", "fieldValue": req.headers.agentid });
                 WhereClouse.push({ "fieldName": "tour_status__c", "fieldValue": "Pending For Approval" });
-
             }
+           
             if (validation.issetNotEmpty(req.query.status)) {
                 WhereClouse.push({ "fieldName": "tour_status__c", "fieldValue": req.query.status });
             }
-
             if (validation.issetNotEmpty(req.query.offset)) {
                 offset = req.query.offset;
             }
@@ -103,7 +103,6 @@ async function getAll(req) {
             var sql = db.fetchAllWithJoinQry(fields, tableName, joins, WhereClouse, offset, limit, ' order by createddate desc');
 
             console.log(`INFO::: Get Tour = ${sql}`);
-
             var tours = await client.query(sql);
 
             if (tours.rowCount != undefined && tours.rowCount > 0) {
@@ -235,7 +234,9 @@ async function updateTour(req) {
 
 
 async function create(req) {
-
+    console.log(req.body,'TOUR BODY');
+    console.log(req.headers,'TOUR HEADERS');
+    
     try {
         is_Validate = true;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.headers.agentid) : false;
