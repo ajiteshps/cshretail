@@ -103,9 +103,7 @@ async function taggedVisit(visitIds,expense__c){
 
 async function getAll(req) {
     try {
-        console.log(req.body,'EXPENSE ITEMS BODY');
-        console.log(req.query,'EXPENSE ITEMS QUERY');
-        console.log(req.headers,'EXPENSE ITEMS HEADERS');
+        
         is_Validate = true;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.headers.agentid) : false;
         is_Validate = is_Validate ? (validation.issetNotEmpty(req.query.id) || validation.issetNotEmpty(req.body.visit_ids) ) : false;
@@ -283,8 +281,6 @@ async function getAll(req) {
             console.log('expenses.rowCount ===  ', expenses.rowCount);
             console.log('====================================')
             console.log(expenses.rows,'EXPENSE API DATA RESPONSES');
-
-            
             if (expenses.rowCount != undefined && expenses.rowCount > 0) {
                 response.response = { 'success': true, "data": { "expenses": expenses.rows } };
                 response.status = 200;
