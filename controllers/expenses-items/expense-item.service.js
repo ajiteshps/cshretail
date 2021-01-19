@@ -282,6 +282,7 @@ async function getAll(req) {
             console.log('====================================')
             console.log('expenses.rowCount ===  ', expenses.rowCount);
             console.log('====================================')
+            console.log(expenses.row,'EXPENSE API DATA RESPONSE');
             if (expenses.rowCount != undefined && expenses.rowCount > 0) {
                 response.response = { 'success': true, "data": { "expenses": expenses.rows } };
                 response.status = 200;
@@ -503,7 +504,7 @@ async function updateExpense(req) {
     console.log(req.body,'UPDATE EXPENSE BODY');
     console.log(req.header,'UPDATE EXPENSE HEADERS');
     console.log(req.query,'UPDATE EXPENSE QUERY');
-    
+
     try {
         is_Validate = true;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.query.id) : false;
