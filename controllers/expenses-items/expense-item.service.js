@@ -633,6 +633,9 @@ async function addRemark(req) {
 
 async function addExpenseItem(req){
     try {
+        console.log(req.body,'EXPENSE BODY API');
+        console.log(req.query,'EXPENSE QUERY API');
+        console.log(req.headers,'EXPENSE HEADER API');
         is_Validate = true;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.query.id) : false;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.headers.agentid) : false;
