@@ -17,7 +17,7 @@ async function getAll(req) {
 
         var sql2 = `SELECT * FROM salesforce.Expense_Submission__cc`;
          var expenses = await client.query(sql2);
-        console.log(expenses,'Expense_Submission');
+        console.log(expenses,'Expense_Submission data');
           
             if (expenses.rowCount != undefined && expenses.rowCount > 0) {
                 response.response = { 'success': true, "data": { "expensesSetting": expenses.rows } };
