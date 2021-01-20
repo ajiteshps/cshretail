@@ -14,8 +14,8 @@ module.exports = {
 
 async function getAll(req) {
     try {
-
-        var sql2 = `SELECT * FROM salesforce.Expense_Submission__cc`;
+        var tablename = 'Expense_Submission__mdt';
+        var sql2 = `SELECT * FROM salesforce.${tablename}`;
          var expenses = await client.query(sql2);
         console.log(expenses,'Expense_Submission data');
           
