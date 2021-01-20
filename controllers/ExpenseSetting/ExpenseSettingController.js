@@ -8,10 +8,8 @@ const ExpenseSettingService = require('./ExpenseSettingservice');
 router.get('/getAll', getAll);
 module.exports = router;
 
-
 function getAll(req, res, next) {
     try {
-        
         if (!_.isEmpty(req.headers.agentid)) {
             ExpenseSettingService.getAll(req)
                 .then(tours => res.status(tours.status).json(tours.response))
