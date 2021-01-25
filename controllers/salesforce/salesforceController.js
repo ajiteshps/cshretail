@@ -17,7 +17,8 @@ module.exports = router;
         salesforceService.connection()
         .then(conn => {
             console.log(conn,'Connection VAR');
-            var body = { teamId: req.body.teamId, month : req.body.month };
+        var body = { teamId: req.headers.agentid, month : req.body.month };
+        console.log(body,'Body Local Expense')
             conn.apex.post("/api/ExpensePDF/",body)
             .then(response => res.status(200).json({
                 status:true,
@@ -40,8 +41,8 @@ function OutStationPDFGeneration(req,res,next) {
     salesforceService.connection()
     .then(conn => {
         console.log(conn,'Connection VAR');
-        var body = { teamId: req.body.teamId, month : req.body.month };
-        console.log(body,'Body')
+        var body = { teamId: req.headers.agentid, month : req.body.month };
+        console.log(body,'Body Outstation Expense')
         conn.apex.put("/api/ExpensePDF/",body)
         .then(response => res.status(200).json({
             status:true,
