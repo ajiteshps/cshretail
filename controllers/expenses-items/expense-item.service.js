@@ -569,16 +569,19 @@ async function updateExpense(req) {
                 } else {
                     response.response = { 'success': false, "data": {}, "message": "Due to internal error Expense update failed." };
                     response.status = 400;
+                    console.log('400',response,' Response ')
                     return response;
                 }
             } else {
                 response.response = { 'success': false, "data": {}, "message": "Invalid Expense ID." };
                 response.status = 400;
+                console.log('400',response,' Response ')
                 return response;
             }
         } else {
             response.response = { 'success': false, "data": {}, "message": "Mandatory parameter(s) are missing." };
             response.status = 400;
+            console.log('400',response,' Response ')
             return response;
         }
     } catch (e) {
