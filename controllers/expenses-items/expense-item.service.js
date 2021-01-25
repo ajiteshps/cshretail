@@ -508,7 +508,7 @@ async function updateExpense(req) {
         is_Validate = is_Validate ? validation.issetNotEmpty(req.query.id) : false;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.headers.agentid) : false;
         //is_Validate = is_Validate ? validation.issetNotEmpty(req.body.food__c) : false;
-        // is_Validate = is_Validate ? validation.issetNotEmpty(req.body.amount__c) : false;
+        is_Validate = is_Validate ? validation.issetNotEmpty(req.body.amount__c) : false;
         //is_Validate = is_Validate ? validation.issetNotEmpty(req.body.kilometers_travelled__c) : false;
 
         if (is_Validate) {

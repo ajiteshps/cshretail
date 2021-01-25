@@ -17,8 +17,7 @@ module.exports = router;
         salesforceService.connection()
         .then(conn => {
             console.log(conn,'Connection VAR');
-        var body = { teamId: req.headers.agentid, month : req.body.month }; // aprovers SFID changed to agent ID
-        console.log(body,'Body Local Expense')
+            var body = { teamId: req.body.teamId, month : req.body.month }; // aprovers SFID changed to agent ID
             conn.apex.post("/api/ExpensePDF/",body)
             .then(response => res.status(200).json({
                 status:true,
@@ -41,7 +40,7 @@ function OutStationPDFGeneration(req,res,next) {
     salesforceService.connection()
     .then(conn => {
         console.log(conn,'Connection VAR');
-        var body = { teamId: req.headers.agentid, month : req.body.month }; // aprovers SFID changed to agent ID
+        var body = { teamId: req.body.teamId, month : req.body.month }; // aprovers SFID changed to agent ID
         conn.apex.put("/api/ExpensePDF/",body)
         .then(response => res.status(200).json({
             status:true,
