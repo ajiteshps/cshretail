@@ -41,6 +41,7 @@ function OutStationPDFGeneration(req,res,next) {
     .then(conn => {
         console.log(conn,'Connection VAR');
         var body = { teamId: req.body.teamId, month : req.body.month };
+        console.log(body,'Body')
         conn.apex.put("/api/ExpensePDF/",body)
         .then(response => res.status(200).json({
             status:true,
