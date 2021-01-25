@@ -500,7 +500,7 @@ async function getAllOutstationExpense(req){
 *  */
 async function updateExpense(req) {
     console.log(req.body,'UPDATE EXPENSE BODY');
-    console.log(req.header,'UPDATE EXPENSE HEADERS');
+    console.log(req.headers,'UPDATE EXPENSE HEADERS');
     console.log(req.query,'UPDATE EXPENSE QUERY');
 
     try {
@@ -508,7 +508,7 @@ async function updateExpense(req) {
         is_Validate = is_Validate ? validation.issetNotEmpty(req.query.id) : false;
         is_Validate = is_Validate ? validation.issetNotEmpty(req.headers.agentid) : false;
         //is_Validate = is_Validate ? validation.issetNotEmpty(req.body.food__c) : false;
-        is_Validate = is_Validate ? validation.issetNotEmpty(req.body.amount__c) : false;
+        // is_Validate = is_Validate ? validation.issetNotEmpty(req.body.amount__c) : false;
         //is_Validate = is_Validate ? validation.issetNotEmpty(req.body.kilometers_travelled__c) : false;
 
         if (is_Validate) {
