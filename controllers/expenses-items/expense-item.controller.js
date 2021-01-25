@@ -105,6 +105,7 @@ function updateExpense(req, res, next) {
                 .then(expenses => res.status(expenses.status).json(expenses.response))
                 .catch(err => next(err));
         } else {
+            console.log(req,'Request Expense Update')
             res.status(400).json({ "success": false, "message": "Mandatory parameter(s) are missing." });
         }
     } catch (e) {
