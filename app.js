@@ -30,8 +30,8 @@ global.encrypt_password = process.env.ENCRYPT_PASSWORD;
 console.log('branch',process.env.DATABASE_URL)
 try {
   global.client = new pg.Client(`${process.env.DATABASE_URL}?ssl=true`);
-  result = await client.connect();
-  console.log(result,' Client')
+  client.connect();
+  console.log(client.connect(),' Client connect')
 } catch (e) {
   console.log(`ERROR::: app.js >>> 14 >>> err `, e);
 }
