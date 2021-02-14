@@ -31,6 +31,7 @@ console.log('branch',process.env.DATABASE_URL)
 try {
   global.client = new pg.Client(`${process.env.DATABASE_URL}?ssl=true`);
   client.connect();
+  console.log(client,' Client')
 } catch (e) {
   console.log(`ERROR::: app.js >>> 14 >>> err `, e);
 }
