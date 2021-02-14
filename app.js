@@ -30,16 +30,10 @@ global.encrypt_password = process.env.ENCRYPT_PASSWORD;
 console.log('branch',process.env.DATABASE_URL)
 try {
   global.client = new pg.Client(`${process.env.DATABASE_URL}?ssl=true`);
-  // client.connect()
+  client.connect();
   console.log(client,' Client')
-  connectDb(client)
 } catch (e) {
   console.log(`ERROR::: app.js >>> 14 >>> err `, e);
-}
-async function connectDb(client)
-{
-  console.log('DbConnect')
-  console.log(await client.connect(),'Client')
 }
 
 var app = express();
