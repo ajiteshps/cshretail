@@ -136,12 +136,11 @@ async function confirmOTP({ phone, password }) {
     try {
         console.log('password >>> ',  password);
         var encPass = md5(password);
-        // let sql2 = `Select * from ${process.env.TABLE_SCHEMA_NAME}.team__c ` ;
+        let sql2 = `Select * from ${process.env.TABLE_SCHEMA_NAME}.team__c ` ;
         let sql = `Select sfid as id from ${process.env.TABLE_SCHEMA_NAME}.team__c where regexp_replace(phone_no__c, '[^0-9]+', '', 'g')='${phone}' and password__c='${encPass}'`; // 
-        console.log(client,' Client')
         console.log('sql  >>>> ',sql)
         let user = await client.query(sql);
-        // let user2 = await client.query(sql2);
+        let user2 = await client.query(sql2);
         console.log(user2);
         if (user.rowCount > 0) {
             const token = jwt.sign({ sub: user.rows[0].id }, config.secret);
